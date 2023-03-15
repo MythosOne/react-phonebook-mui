@@ -32,45 +32,47 @@ export const LoginForm = () => {
     '& .MuiInput-underline:after': {
       borderBottomColor: '#3f51b5',
     },
-    });
+  });
 
   return (
-    <AddLoginForm onSubmit={handleSubmit}>
-      <Container>
-        <CssTextField
-        fullWidth
-        type="email"
-        name="email"
-        label="Email"
-        variant="standard"
-        />
-        <CssTextField
-        fullWidth
-        type="password"
-        name="password"
-        label="Password"
-        variant="standard"
-      />
-      </Container>
-      <Button
-        variant="contained"
-        startIcon={<AccountCircle />}
-        type="submit"
-        style={{
-          borderRadius: '4px',
-          width: '120px',
-          height: '40px',
-          textAlign: 'center',
-          border: 'none',
-          fontSize: '16px',
-          fontWeight: '600',
-          backgroundColor: '#3f51b5',
-          color: 'white',
-          margin: '0 auto',
-        }}
-      >
-        Log In
-      </Button>
-    </AddLoginForm>
+    <>
+      <AddLoginForm onSubmit={handleSubmit}>
+        <Container>
+          <CssTextField
+            fullWidth
+            type="email"
+            name="email"
+            label="Email"
+            variant="standard"
+          />
+          <CssTextField
+            fullWidth
+            type="password"
+            name="password"
+            label="Password"
+            variant="standard"
+          />
+        </Container>
+        <Button
+          variant="contained"
+          startIcon={<AccountCircle />}
+          type="submit"
+          style={{
+            borderRadius: '4px',
+            width: '120px',
+            height: '40px',
+            textAlign: 'center',
+            border: 'none',
+            fontSize: '16px',
+            fontWeight: '600',
+            backgroundColor: '#3f51b5',
+            color: 'white',
+            margin: '0 auto',
+          }}
+        >
+          Log In
+        </Button>
+      </AddLoginForm>
+    </>
   );
 };
