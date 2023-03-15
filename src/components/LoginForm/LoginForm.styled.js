@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const AddLoginForm = styled.form`
-  max-width: 300px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 70px;
   padding: 20px;
-  margin: 100px auto 0;
   border: 2px solid rgb(236, 236, 236);
   border-radius: 10px;
   box-shadow: 0px 1px 3px rgb(0, 0, 0, 0.12);
@@ -18,7 +17,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
 
-  margin-bottom: 30px;
+  margin-top: 20px;
 `;

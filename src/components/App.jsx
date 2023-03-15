@@ -24,31 +24,33 @@ export const App = () => {
   return isRefreshing ? (
     'Fetching user data...'
   ) : (
-    <Container>
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                component={RegisterPage}
-                redirectTo="/contacts"
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
-            }
-          />
-          <Route
-            path="/contacts"
-            element={<PrivateRoute component={Contacts} redirectTo="/login" />}
-          />
-        </Route>
-      </Routes>
-    </Container>
+      <Container>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  component={RegisterPage}
+                  redirectTo="/contacts"
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
+              }
+            />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute component={Contacts} redirectTo="/login" />
+              }
+            />
+          </Route>
+        </Routes>
+      </Container>
   );
 };

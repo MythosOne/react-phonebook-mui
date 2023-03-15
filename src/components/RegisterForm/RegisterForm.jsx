@@ -24,24 +24,24 @@ export const RegisterForm = () => {
 
   const CssTextField = styled(TextField)({
     '& label': {
-      color: '#3f51b5',
+      color: 'white',
     },
     '& label.Mui-focused': {
-      color: '#3f51b5',
+      color: 'white',
       fontWeight: '600',
     },
     '& .MuiInput-underline:after': {
-      borderBottomColor: '#3f51b5',
+      borderBottomColor: 'white',
     },
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: '#3f51b5',
+        borderColor: 'white',
       },
       '&:hover fieldset': {
-        borderColor: 'yellow',
+        borderColor: '#3f51b5',
       },
       '&.Mui-focused fieldset': {
-        borderColor: '#3f51b5',
+        borderColor: 'white',
       },
     },
   });
@@ -78,7 +78,7 @@ export const RegisterForm = () => {
           type="submit"
           style={{
             borderRadius: '4px',
-            width: '120px',
+            width: '160px',
             height: '40px',
             textAlign: 'center',
             border: 'none',

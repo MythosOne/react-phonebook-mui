@@ -1,3 +1,5 @@
+
+
 const styles = {
   container: {
     minHeight: 'calc(80vh - 50px)',
@@ -7,8 +9,9 @@ const styles = {
   },
   title: {
     fontWeight: 500,
-    fontSize: 48,
+    fontSize: 54,
     textAlign: 'center',
+    color: 'white',
   },
 };
 

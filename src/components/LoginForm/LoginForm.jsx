@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { AddLoginForm, Container } from './LoginForm.styled';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
@@ -22,15 +22,19 @@ export const LoginForm = () => {
   };
 
   const CssTextField = styled(TextField)({
+    '& input': {
+      fontSize: '20px',
+    },
     '& label': {
-      color: '#3f51b5',
+      fontSize: '20px',
+      color: 'white',
     },
     '& label.Mui-focused': {
-      color: '#3f51b5',
+      color: 'white',
       fontWeight: '600',
     },
     '& .MuiInput-underline:after': {
-      borderBottomColor: '#3f51b5',
+      borderBottomColor: 'white',
     },
   });
 
@@ -38,6 +42,13 @@ export const LoginForm = () => {
     <>
       <AddLoginForm onSubmit={handleSubmit}>
         <Container>
+          <Typography
+            variant='h4'
+            fontWeight='400'
+            color='white'
+          >
+            LOGIN
+          </Typography>
           <CssTextField
             fullWidth
             type="email"
@@ -50,7 +61,7 @@ export const LoginForm = () => {
             type="password"
             name="password"
             label="Password"
-            variant="standard"
+            variant="filled"
           />
         </Container>
         <Button
@@ -59,7 +70,7 @@ export const LoginForm = () => {
           type="submit"
           style={{
             borderRadius: '4px',
-            width: '120px',
+            width: '160px',
             height: '40px',
             textAlign: 'center',
             border: 'none',
