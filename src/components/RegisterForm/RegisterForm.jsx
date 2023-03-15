@@ -11,7 +11,8 @@ export const RegisterForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const form = dispatch(
+    const form = event.currentTarget;
+      dispatch(
       register({
         name: form.elements.userName.value,
         email: form.elements.email.value,
