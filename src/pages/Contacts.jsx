@@ -15,8 +15,9 @@ const styles = {
   maxWidth: '300px',
   marginTop: '30px',
   border: '1px solid rgb(236, 236, 236)',
-  borderRadius: '4px',
-  boxShadow: '0px 1px 3px rgb(0, 0, 0, 0.12)',
+  borderRadius: '10px',
+    boxShadow: '0px 1px 3px rgb(0, 0, 0, 0.12)',
+  backdropFilter: 'blur(10px)',
   },
   message: {
   padding: '0',

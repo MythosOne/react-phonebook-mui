@@ -1,7 +1,11 @@
 import styled from 'styled-components';
+import img from './img/phonebook-website-background.jpg';
 
-export const Container = styled.div`
-  background-color: white;
+export const Container = styled.section`
+  background-image: url('${img}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   max-width: 960px;
   min-height: calc(80vh - 50px);
   margin: 10px auto;

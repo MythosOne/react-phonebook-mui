@@ -1,55 +1,76 @@
-import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import {
-  AddLoginForm,
-  Label,
-  FormikInput,
-  LogButton,
-} from './LoginForm.styled';
+import { AddLoginForm, Container } from './LoginForm.styled';
+import { Button, TextField } from '@mui/material';
+import { AccountCircle } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
     dispatch(
       logIn({
-        email: values.email,
-        password: values.password,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
       })
     );
-    resetForm();
+    form.reset();
   };
 
+  const CssTextField = styled(TextField)({
+    '& label': {
+      color: '#3f51b5',
+    },
+    '& label.Mui-focused': {
+      color: '#3f51b5',
+      fontWeight: '600',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#3f51b5',
+    },
+    });
+
   return (
-    <Formik
-      initialValues={{
-        email: '',
-        password: '',
-      }}
-      onSubmit={handleSubmit}
-    >
-      <AddLoginForm>
-        <Label>
-          Email
-          <FormikInput
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
-        </Label>
-        <Label>
-          Password
-          <FormikInput
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            required
-          />
-        </Label>
-        <LogButton type="submit">Log In</LogButton>
-      </AddLoginForm>
-    </Formik>
+    <AddLoginForm onSubmit={handleSubmit}>
+      <Container>
+        <CssTextField
+        fullWidth
+        type="email"
+        name="email"
+        label="Email"
+        variant="standard"
+        />
+        <CssTextField
+        fullWidth
+        type="password"
+        name="password"
+        label="Password"
+        variant="standard"
+      />
+      </Container>
+      <Button
+        variant="contained"
+        startIcon={<AccountCircle />}
+        type="submit"
+        style={{
+          borderRadius: '4px',
+          width: '120px',
+          height: '40px',
+          textAlign: 'center',
+          border: 'none',
+          fontSize: '16px',
+          fontWeight: '600',
+          backgroundColor: '#3f51b5',
+          color: 'white',
+          margin: '0 auto',
+        }}
+      >
+        Log In
+      </Button>
+    </AddLoginForm>
   );
 };

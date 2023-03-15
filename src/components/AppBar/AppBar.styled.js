@@ -6,8 +6,8 @@ export const Header = styled.header`
   justify-content: space-between;
   padding: 8px 0;
   margin-bottom: 10px;
-  border-bottom: 2px solid rgb(236, 236, 236);
   box-shadow: 0px 15px 10px -15px #111;
+  backdrop-filter: blur(10px);
 
   > nav {
     display: flex;
