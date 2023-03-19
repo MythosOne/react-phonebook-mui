@@ -11,9 +11,9 @@ const styles = {
 
 const Register = () => {
   return (
-    <div style={styles.container}>
+    <section style={styles.container}>
       <RegisterForm />
-    </div>
+    </section>
   );
 };
 

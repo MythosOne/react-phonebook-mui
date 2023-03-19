@@ -1,14 +1,22 @@
-import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import { getContacts } from '../../redux/contacts/selectors';
-import { AddContactForm, Label, AddButton, FormikInput } from './ContactsForm.styled';
+import { AddContactForm, Container } from './ContactForm.styled';
+import { styled } from '@mui/material/styles';
+import { Button, TextField, Typography } from '@mui/material';
+import { AddIcCall } from '@mui/icons-material';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
-  const handleSubmit = ({ name, number }, { resetForm }) => {
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const name = form.elements.name.value;
+    const number = form.elements.tel.value;
+
     const loweredCase = name.toLowerCase().trim();
     const searchName = contacts.some(
       cont => cont.name.toLowerCase().trim() === loweredCase
@@ -26,42 +34,74 @@ export const ContactForm = () => {
         })
       );
     }
-    resetForm();
+    form.reset();
   };
 
+  const CssTextField = styled(TextField)({
+    '& input': {
+      fontSize: '20px',
+    },
+    '& label': {
+      fontSize: '20px',
+      color: 'white',
+    },
+    '& label.Mui-focused': {
+      color: 'white',
+      fontWeight: '400',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'white',
+    },
+  });
+
   return (
-    <Formik
-      initialValues={{
-        name: '',
-        number: '',
-      }}
-      onSubmit={handleSubmit}
-    >
-      <AddContactForm>
-        <Label>
-          Name
-          <FormikInput
-            type="text"
+    <>
+      <AddContactForm onSubmit={handleSubmit}>
+        <Container>
+          <Typography variant="h4" fontWeight="400" color="white">
+            CONTACTS
+          </Typography>
+          <CssTextField
+            fullWidth
+            type="name"
             name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            label="Name"
+            variant="filled"
+            inputProps={{pattern:"^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"}}
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            placeholder="Enter name"
-            required
+            // required
           />
-        </Label>
-        <Label>
-          Number
-          <FormikInput
+          <CssTextField
+            fullWidth
             type="tel"
-            name="number"
-            pattern="\d{3}[-]\d{2}[-]\d{2}"
-            title="The phone number must consist of numbers and a dash ###-##-##"
-            placeholder="Enter phone number"
-            required
+            name="tel"
+            label="Number phone"
+            variant="filled"
+            // inputProps={{inputMode: 'tel', pattern:"\d{3}[-]\d{2}[-]\d{2}"}}
+            // title="The phone number must consist of numbers and a dash ###-##-##"
+            // required
           />
-        </Label>
-        <AddButton type="submit">Add Contact</AddButton>
+        </Container>
+        <Button
+          variant="contained"
+          startIcon={<AddIcCall />}
+          type="submit"
+          style={{
+            borderRadius: '4px',
+            width: '180px',
+            height: '40px',
+            textAlign: 'center',
+            border: 'none',
+            fontSize: '16px',
+            fontWeight: '600',
+            backgroundColor: '#3f51b5',
+            color: 'white',
+            margin: '0 auto',
+          }}
+        >
+          Add Contact
+        </Button>
       </AddContactForm>
-    </Formik>
+    </>
   );
 };

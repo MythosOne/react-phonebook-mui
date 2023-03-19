@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import { AddRegisterForm, Container } from './RegisterForm.styled';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { AppRegistration } from '@mui/icons-material';
 
@@ -12,7 +12,7 @@ export const RegisterForm = () => {
     event.preventDefault();
 
     const form = event.currentTarget;
-      dispatch(
+    dispatch(
       register({
         name: form.elements.userName.value,
         email: form.elements.email.value,
@@ -23,7 +23,11 @@ export const RegisterForm = () => {
   };
 
   const CssTextField = styled(TextField)({
+    '& input': {
+      fontSize: '20px',
+    },
     '& label': {
+      fontSize: '20px',
       color: 'white',
     },
     '& label.Mui-focused': {
@@ -33,43 +37,38 @@ export const RegisterForm = () => {
     '& .MuiInput-underline:after': {
       borderBottomColor: 'white',
     },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: 'white',
-      },
-      '&:hover fieldset': {
-        borderColor: '#3f51b5',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: 'white',
-      },
-    },
   });
 
   return (
     <>
       <AddRegisterForm onSubmit={handleSubmit}>
         <Container>
+          <Typography
+            variant="h4"
+            fontWeight="400"
+            color="white">
+            REGISTER
+          </Typography>
           <CssTextField
             fullWidth
             type="userName"
             name="userName"
             label="User Name"
-            variant="outlined"
+            variant="filled"
           />
           <CssTextField
             fullWidth
             type="email"
             name="email"
             label="Email"
-            variant="outlined"
+            variant="filled"
           />
           <CssTextField
             fullWidth
             type="password"
             name="password"
             label="Password"
-            variant="outlined"
+            variant="filled"
           />
         </Container>
         <Button

@@ -7,7 +7,7 @@ export const User = styled.div`
 `;
 
 export const UserName = styled.p`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   margin: 0;
 `;

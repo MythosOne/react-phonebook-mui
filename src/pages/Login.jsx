@@ -11,9 +11,9 @@ const styles = {
 
 const Login = () => {
   return (
-    <div style={styles.container}>
+    <section style={styles.container}>
       <LoginForm />
-    </div>
+    </section>
   );
 };
 

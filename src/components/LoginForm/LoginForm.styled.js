@@ -9,7 +9,7 @@ export const AddLoginForm = styled.form`
   padding: 20px;
   border: 2px solid rgb(236, 236, 236);
   border-radius: 10px;
-  box-shadow: 0px 1px 3px rgb(0, 0, 0, 0.12);
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   backdrop-filter: blur(10px);
 `;
 

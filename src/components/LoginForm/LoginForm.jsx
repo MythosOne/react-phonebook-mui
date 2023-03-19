@@ -22,6 +22,7 @@ export const LoginForm = () => {
   };
 
   const CssTextField = styled(TextField)({
+
     '& input': {
       fontSize: '20px',
     },
@@ -54,7 +55,7 @@ export const LoginForm = () => {
             type="email"
             name="email"
             label="Email"
-            variant="standard"
+            variant="filled"
           />
           <CssTextField
             fullWidth
