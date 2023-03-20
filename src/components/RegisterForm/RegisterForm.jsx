@@ -1,8 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import { AddRegisterForm, Container } from './RegisterForm.styled';
-import { Button, TextField, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import {
+  AddRegisterForm,
+  Container,
+  StyledTextField,
+  StyledButton
+} from './RegisterForm.styled';
+import { Typography } from '@mui/material';
 import { AppRegistration } from '@mui/icons-material';
 
 export const RegisterForm = () => {
@@ -22,23 +26,6 @@ export const RegisterForm = () => {
     form.Reset();
   };
 
-  const CssTextField = styled(TextField)({
-    '& input': {
-      fontSize: '20px',
-    },
-    '& label': {
-      fontSize: '20px',
-      color: 'white',
-    },
-    '& label.Mui-focused': {
-      color: 'white',
-      fontWeight: '600',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'white',
-    },
-  });
-
   return (
     <>
       <AddRegisterForm onSubmit={handleSubmit}>
@@ -49,21 +36,21 @@ export const RegisterForm = () => {
             color="white">
             REGISTER
           </Typography>
-          <CssTextField
+          <StyledTextField
             fullWidth
             type="userName"
             name="userName"
             label="User Name"
             variant="filled"
           />
-          <CssTextField
+          <StyledTextField
             fullWidth
             type="email"
             name="email"
             label="Email"
             variant="filled"
           />
-          <CssTextField
+          <StyledTextField
             fullWidth
             type="password"
             name="password"
@@ -71,25 +58,13 @@ export const RegisterForm = () => {
             variant="filled"
           />
         </Container>
-        <Button
+        <StyledButton
           variant="contained"
           startIcon={<AppRegistration />}
           type="submit"
-          style={{
-            borderRadius: '4px',
-            width: '160px',
-            height: '40px',
-            textAlign: 'center',
-            border: 'none',
-            fontSize: '16px',
-            fontWeight: '600',
-            backgroundColor: '#3f51b5',
-            color: 'white',
-            margin: '0 auto',
-          }}
         >
           Register
-        </Button>
+        </StyledButton>
       </AddRegisterForm>
     </>
   );

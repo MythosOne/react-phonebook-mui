@@ -1,15 +1,13 @@
 import { deleteContact } from '../../redux/contacts/operations';
 import { getContacts, getFilter } from '../../redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { Message} from './ContactList.styled';
+import { StyledButton, Message, StyledTypography} from './ContactList.styled';
 import {
   List,
   ListItem,
   ListItemAvatar,
   Avatar,
   ListItemText,
-  Button,
-  Typography
 } from '@mui/material';
 import {AccountCircle, PersonRemove } from '@mui/icons-material';
 
@@ -27,46 +25,35 @@ export const ContactList = () => {
   const visibleContacts = filterContacts(contacts, filter);
 
   return (
-    <List sx={{padding:"20px 20px 12px"}}>
+    <List sx={{ padding: '20px 20px 12px' }}>
       {visibleContacts.map(contact => (
-        <ListItem key={contact.id} sx={{padding:"0 0 8px"}}>
+        <ListItem key={contact.id} sx={{ padding: '0 0 8px' }}>
           <ListItemAvatar>
-            <Avatar  sx={{bgcolor:"#3f51b5"}}>
-              <AccountCircle/>
+            <Avatar sx={{ bgcolor: '#3f51b5' }}>
+              <AccountCircle />
             </Avatar>
-            </ListItemAvatar>
+          </ListItemAvatar>
           <ListItemText>
-            <Typography
+            <StyledTypography
               fontSize="18px"
-              color="white">
+              color="white"
+              textShadow="2px 2px 4px black"
+            >
               {`${contact.name} : ${contact.number}`}
-            </Typography>
-            </ListItemText>
+            </StyledTypography>
+          </ListItemText>
           {
-            <Button
+            <StyledButton
               variant="outlined"
               startIcon={<PersonRemove />}
               type="button"
               name="delete"
-              style={{
-            borderRadius: '4px',
-            width: '100px',
-            height: '30px',
-            textAlign: 'center',
-            border: 'none',
-            fontSize: '12px',
-            backgroundColor: '#3f51b5',
-            color: 'white',
-            margin: '0 auto',
-          }}
               onClick={() => {
-                dispatch(
-                  deleteContact(contact.id)
-                );
+                dispatch(deleteContact(contact.id));
               }}
             >
               Delete
-            </Button>
+            </StyledButton>
           }
         </ListItem>
       ))}

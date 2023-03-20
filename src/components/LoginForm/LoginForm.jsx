@@ -1,9 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import { AddLoginForm, Container } from './LoginForm.styled';
-import { Button, TextField, Typography } from '@mui/material';
+import {
+  AddLoginForm,
+  Container,
+  StyledTextField,
+  StyledButton
+} from './LoginForm.styled';
+import { Typography } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
-import { styled } from '@mui/material/styles';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -21,24 +25,6 @@ export const LoginForm = () => {
     form.reset();
   };
 
-  const CssTextField = styled(TextField)({
-
-    '& input': {
-      fontSize: '20px',
-    },
-    '& label': {
-      fontSize: '20px',
-      color: 'white',
-    },
-    '& label.Mui-focused': {
-      color: 'white',
-      fontWeight: '600',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'white',
-    },
-  });
-
   return (
     <>
       <AddLoginForm onSubmit={handleSubmit}>
@@ -50,14 +36,14 @@ export const LoginForm = () => {
           >
             LOGIN
           </Typography>
-          <CssTextField
+          <StyledTextField
             fullWidth
             type="email"
             name="email"
             label="Email"
             variant="filled"
           />
-          <CssTextField
+          <StyledTextField
             fullWidth
             type="password"
             name="password"
@@ -65,25 +51,13 @@ export const LoginForm = () => {
             variant="filled"
           />
         </Container>
-        <Button
+        <StyledButton
           variant="contained"
           startIcon={<AccountCircle />}
           type="submit"
-          style={{
-            borderRadius: '4px',
-            width: '160px',
-            height: '40px',
-            textAlign: 'center',
-            border: 'none',
-            fontSize: '16px',
-            fontWeight: '600',
-            backgroundColor: '#3f51b5',
-            color: 'white',
-            margin: '0 auto',
-          }}
         >
           Log In
-        </Button>
+        </StyledButton>
       </AddLoginForm>
     </>
   );

@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import { getContacts } from '../../redux/contacts/selectors';
-import { AddContactForm, Container } from './ContactForm.styled';
-import { styled } from '@mui/material/styles';
-import { Button, TextField, Typography } from '@mui/material';
+import {
+  AddContactForm,
+  Container,
+  StyledTextField,
+  StyledButton
+} from './ContactForm.styled';
+import { Typography } from '@mui/material';
 import { AddIcCall } from '@mui/icons-material';
 
 export const ContactForm = () => {
@@ -37,23 +41,6 @@ export const ContactForm = () => {
     form.reset();
   };
 
-  const CssTextField = styled(TextField)({
-    '& input': {
-      fontSize: '20px',
-    },
-    '& label': {
-      fontSize: '20px',
-      color: 'white',
-    },
-    '& label.Mui-focused': {
-      color: 'white',
-      fontWeight: '400',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'white',
-    },
-  });
-
   return (
     <>
       <AddContactForm onSubmit={handleSubmit}>
@@ -61,7 +48,7 @@ export const ContactForm = () => {
           <Typography variant="h4" fontWeight="400" color="white">
             CONTACTS
           </Typography>
-          <CssTextField
+          <StyledTextField
             fullWidth
             type="name"
             name="name"
@@ -71,7 +58,7 @@ export const ContactForm = () => {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             // required
           />
-          <CssTextField
+          <StyledTextField
             fullWidth
             type="tel"
             name="tel"
@@ -82,25 +69,13 @@ export const ContactForm = () => {
             // required
           />
         </Container>
-        <Button
+        <StyledButton
           variant="contained"
           startIcon={<AddIcCall />}
           type="submit"
-          style={{
-            borderRadius: '4px',
-            width: '180px',
-            height: '40px',
-            textAlign: 'center',
-            border: 'none',
-            fontSize: '16px',
-            fontWeight: '600',
-            backgroundColor: '#3f51b5',
-            color: 'white',
-            margin: '0 auto',
-          }}
         >
           Add Contact
-        </Button>
+        </StyledButton>
       </AddContactForm>
     </>
   );
