@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -32,7 +33,8 @@ export const logIn = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      alert('error login')
+      alert('Login error')
+      // toast.error('Login error', { theme: 'colored' });
       return thunkAPI.rejectWithValue(error.message);
     }
   }

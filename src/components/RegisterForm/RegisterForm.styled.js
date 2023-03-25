@@ -13,8 +13,10 @@ export const AddRegisterForm = styled.form`
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   backdrop-filter: blur(10px);
 
-  transform: scale(1);
-  transition: transform 0.5s ease, height 0.2s ease ;
+  transition: .5s;
+
+  /* transform: scale(1);
+  transition: transform 0.5s ease, height 0.2s ease ; */
 `;
 
 export const Container = styled.div`
@@ -41,10 +43,10 @@ export const StyledTextField = styled(TextField)`
     color: white;
     font-weight: 600;
   }
-
+/* 
   & .MuiInput-underline:after {
     border-bottom-color: white;
-  }
+  } */
 `;
 
 export const StyledButton = styled(Button)`

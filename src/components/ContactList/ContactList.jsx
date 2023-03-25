@@ -37,7 +37,7 @@ export const ContactList = () => {
             <StyledTypography
               fontSize="18px"
               color="white"
-              textShadow="2px 2px 4px black"
+              textshadow="2px 2px 4px black"
             >
               {`${contact.name} : ${contact.number}`}
             </StyledTypography>

@@ -6,8 +6,20 @@ import {
   StyledTextField,
   StyledButton
 } from './RegisterForm.styled';
-import { Typography } from '@mui/material';
-import { AppRegistration } from '@mui/icons-material';
+import {
+  Typography,
+  InputAdornment,
+  FormControl,
+  InputLabel,
+  FilledInput,
+  IconButton,
+} from '@mui/material';
+import {
+  AppRegistration,
+  Visibility,
+  VisibilityOff,
+} from '@mui/icons-material';
+import * as React from 'react';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -24,6 +36,14 @@ export const RegisterForm = () => {
       })
     );
     form.Reset();
+  };
+
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword(show => !show);
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
   };
 
   return (
@@ -50,13 +70,36 @@ export const RegisterForm = () => {
             label="Email"
             variant="filled"
           />
-          <StyledTextField
+          {/* <StyledTextField
             fullWidth
             type="password"
             name="password"
             label="Password"
             variant="filled"
-          />
+          /> */}
+          <FormControl variant="filled" fullWidth>
+            <InputLabel sx={{ fontSize: '20px', color: '#fff' }}>
+              Password
+            </InputLabel>
+            <FilledInput
+              sx={{ fontSize: '20px', color: '#fff' }}
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    sx={{ color: '#fff' }}
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+            </FormControl>
         </Container>
         <StyledButton
           variant="contained"

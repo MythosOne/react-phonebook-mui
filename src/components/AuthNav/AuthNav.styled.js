@@ -14,9 +14,9 @@ export const Link = styled(NavLink)`
 
   &.active {
     color: white;
-    transition: 350ms color;
     border: 4px solid #3f51b5;
     border-radius: 6px;
+    transition: 0.5s color;
   }
 `;
 

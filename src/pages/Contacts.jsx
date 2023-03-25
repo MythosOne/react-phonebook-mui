@@ -24,10 +24,11 @@ const styles = {
     color: 'orange',
   },
   section: {
-    minHeight: '70vh',
+    minHeight: '60vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: '20px',
   },
 };
 

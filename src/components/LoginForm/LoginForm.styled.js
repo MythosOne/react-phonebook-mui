@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, FilledInput } from '@mui/material';
 
 export const AddLoginForm = styled.form`
   width: 400px;
@@ -38,9 +38,26 @@ export const StyledTextField = styled(TextField)`
     color: white;
     font-weight: 600;
   }
-
+/* 
   & .MuiInput-underline:after {
     border-bottom-color: white;
+  } */
+`;
+
+export const StyledFilledInput = styled(FilledInput)`
+  & input {
+    font-size: 20px;
+    color: white;
+  }
+
+  & label {
+    font-size: 20px;
+    color: white;
+  }
+
+  & label.Mui-focused {
+    color: white;
+    font-weight: 600;
   }
 `;
 
