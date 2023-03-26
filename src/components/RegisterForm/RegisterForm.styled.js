@@ -51,7 +51,7 @@ export const StyledTextField = styled(TextField)`
 
 export const StyledButton = styled(Button)`
   border-radius: 4px;
-  width: 160px;
+  min-width: 90px;
   height: 40px;
   text-align: center;
   border: none;

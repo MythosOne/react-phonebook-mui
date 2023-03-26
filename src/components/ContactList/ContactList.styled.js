@@ -12,7 +12,7 @@ export const Message = styled.ul`
 
 export const StyledButton = styled(Button)`
   border-radius: 4px;
-  width: 100px;
+  min-width: 90px;
   height: 30px;
   text-align: center;
   border: none;
