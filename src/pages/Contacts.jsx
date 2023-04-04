@@ -15,6 +15,7 @@ const styles = {
     borderRadius: '10px',
     boxShadow: 'rgba(0, 0, 0, 0.45) 0px 25px 20px -20px',
     backdropFilter: 'blur(10px)',
+    marginBottom: '20px',
   },
   message: {
     padding: '0',
