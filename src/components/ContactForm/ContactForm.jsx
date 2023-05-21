@@ -50,11 +50,11 @@ export const ContactForm = () => {
           </Typography>
           <StyledTextField
             fullWidth
-            type="name"
+            type="text"
             name="name"
             label="Name"
             variant="filled"
-            inputProps={{pattern:"^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"}}
+            inputProps={{inputMode: "text", pattern:"^[a-zA-Zа-яА-Я]+(([-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"}}
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             // required
           />
@@ -64,8 +64,8 @@ export const ContactForm = () => {
             name="tel"
             label="Number phone"
             variant="filled"
-            // inputProps={{inputMode: 'tel', pattern:"\d{3}[-]\d{2}[-]\d{2}"}}
-            // title="The phone number must consist of numbers and a dash ###-##-##"
+            inputProps={{inputMode: "tel", pattern:"\d{3}[-]\d{2}[-]\d{2}"}}
+            title="The phone number must consist of numbers and a dash ###-##-##"
             // required
           />
         </Container>

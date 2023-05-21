@@ -27,14 +27,10 @@ export const StyledTextField = styled(TextField)`
     color: white;
   }
 
-  & label.Mui-focused {
+  /* & label.Mui-focused {
     color: white;
     font-weight: 600;
-  }
-
-  & .MuiInput-underline:after {
-    border-bottom-color: white;
-  }
+  } */
 `;
 
 export const StyledButton = styled(Button)`

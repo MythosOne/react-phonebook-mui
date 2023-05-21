@@ -12,6 +12,7 @@ export const AddLoginForm = styled.form`
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   backdrop-filter: blur(10px);
+  margin-bottom: 20px;
 `;
 
 export const Container = styled.div`
@@ -34,13 +35,9 @@ export const StyledTextField = styled(TextField)`
     color: white;
   }
 
-  & label.Mui-focused {
+  /* & label.Mui-focused {
     color: white;
     font-weight: 600;
-  }
-/* 
-  & .MuiInput-underline:after {
-    border-bottom-color: white;
   } */
 `;
 
@@ -73,7 +70,7 @@ export const StyledButton = styled(Button)`
   color: white;
   margin: 0 auto;
 
-    &:hover {
+  &:hover {
     background-color: #3f51b5;
   }
 `;
