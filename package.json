@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-08-phonebook-mui",
+  "name": "react-phonebook-mui",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mythosone.github.io/goit-react-hw-08-phonebook-mui/",
+  "homepage": "https://mythosone.github.io/react-phonebook-mui/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

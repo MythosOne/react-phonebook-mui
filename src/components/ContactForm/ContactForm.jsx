@@ -64,7 +64,7 @@ export const ContactForm = () => {
             name="tel"
             label="Number phone"
             variant="filled"
-            inputProps={{inputMode: "tel", pattern:"\d{3}[-]\d{2}[-]\d{2}"}}
+            inputProps={{inputMode: "tel", pattern:"\\d{3}[-]\\d{2}[-]\\d{2}"}}
             title="The phone number must consist of numbers and a dash ###-##-##"
             // required
           />
