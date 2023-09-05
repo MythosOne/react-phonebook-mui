@@ -7,11 +7,7 @@ import {
   StyledButton,
   StyledFilledInput,
 } from './LoginForm.styled';
-import {
-  AccountCircle,
-  Visibility,
-  VisibilityOff
-} from '@mui/icons-material';
+import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material';
 import {
   IconButton,
   InputAdornment,
@@ -59,12 +55,19 @@ export const LoginForm = () => {
             label="Email"
             variant="filled"
           />
+          {/* <StyledTextField
+            sx={{ fontSize: '20px', color: '#fff' }}
+            fullWidth
+            type="password"
+            name="password"
+            label="Password"
+            variant="filled"
+          /> */}
           <FormControl variant="filled" fullWidth>
             <InputLabel sx={{ fontSize: '20px', color: '#fff' }}>
               Password
             </InputLabel>
             <StyledFilledInput
-              // sx={{ fontSize: '20px', color: '#fff' }}
               type={showPassword ? 'text' : 'password'}
               name="password"
               endAdornment={

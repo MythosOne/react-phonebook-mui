@@ -70,7 +70,7 @@ export const RegisterForm = () => {
             label="Email"
             variant="filled"
           />
-          {/* <StyledTextField
+          {/* <StyledTextField sx={{ fontSize: '20px', color: '#fff' }}
             fullWidth
             type="password"
             name="password"

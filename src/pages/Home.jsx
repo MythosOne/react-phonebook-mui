@@ -1,3 +1,4 @@
+import img from '../components/img/book-159880.png'
 
 const styles = {
   container: {
@@ -19,9 +20,7 @@ const Home = () => {
     <section style={styles.container}>
       <h1 style={styles.title}>
         Phone book manager welcome page{' '}
-        <span role="img" aria-label="Greeting icon">
-          😎
-        </span>
+        <img src={img} alt='Phonebook' width='240' />
       </h1>
     </section>
   );
