@@ -30,12 +30,12 @@ export const RegisterForm = () => {
     const form = event.currentTarget;
     dispatch(
       register({
-        name: form.elements.userName.value,
+        username: form.elements.userName.value,
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
     );
-    form.Reset();
+    form.reset();
   };
 
   const [showPassword, setShowPassword] = React.useState(false);
