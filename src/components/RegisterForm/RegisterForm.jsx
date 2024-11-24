@@ -1,10 +1,12 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { register } from 'redux/auth/operations';
 import {
   AddRegisterForm,
   Container,
   StyledTextField,
-  StyledButton
+  StyledButton,
 } from './RegisterForm.styled';
 import {
   Typography,
@@ -23,22 +25,31 @@ import * as React from 'react';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isRegistered, setIsRegistered] = useState(false);
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
     const form = event.currentTarget;
-    dispatch(
+
+    const registrationResult = await dispatch(
       register({
         username: form.elements.userName.value,
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
     );
+
+    if (registrationResult.mate.requestStatus === 'fulfilled') {
+      setIsRegistered(true);
+      setTimeout(() => navigate('/login'), 3000);
+    }
+
     form.reset();
   };
 
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
 
@@ -50,10 +61,7 @@ export const RegisterForm = () => {
     <>
       <AddRegisterForm onSubmit={handleSubmit}>
         <Container>
-          <Typography
-            variant="h4"
-            fontWeight="400"
-            color="white">
+          <Typography variant="h4" fontWeight="400" color="white">
             REGISTER
           </Typography>
           <StyledTextField
@@ -99,7 +107,7 @@ export const RegisterForm = () => {
                 </InputAdornment>
               }
             />
-            </FormControl>
+          </FormControl>
         </Container>
         <StyledButton
           variant="contained"
@@ -109,6 +117,12 @@ export const RegisterForm = () => {
           Register
         </StyledButton>
       </AddRegisterForm>
+
+      {isRegistered && (
+        <div>
+          <p>Registration was successful! Go to login page...</p>
+        </div>
+      )}
     </>
   );
 };
