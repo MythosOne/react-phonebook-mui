@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { register } from 'redux/auth/operations';
 import {
@@ -25,15 +25,23 @@ import * as React from 'react';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [isRegistered, setIsRegistered] = useState(false);
+  // const navigate = useNavigate();
+  // const [isRegistered, setIsRegistered] = useState(false);
 
   const handleSubmit = async event => {
     event.preventDefault();
 
     const form = event.currentTarget;
 
-    const registrationResult = await dispatch(
+    // const registrationResult = await dispatch(
+    //   register({
+    //     username: form.elements.userName.value,
+    //     email: form.elements.email.value,
+    //     password: form.elements.password.value,
+    //   })
+    // );
+
+    dispatch(
       register({
         username: form.elements.userName.value,
         email: form.elements.email.value,
@@ -41,10 +49,13 @@ export const RegisterForm = () => {
       })
     );
 
-    if (registrationResult.mate.requestStatus === 'fulfilled') {
-      setIsRegistered(true);
-      setTimeout(() => navigate('/login'), 3000);
-    }
+    // console.log('registrationResult:', registrationResult);
+
+    // if (registrationResult.meta.requestStatus === 'fulfilled') {
+    //   setIsRegistered(true);
+    //   setTimeout(() => navigate('/login'), 3000);
+    //   console.log("I am worked")
+    // }
 
     form.reset();
   };
@@ -118,11 +129,11 @@ export const RegisterForm = () => {
         </StyledButton>
       </AddRegisterForm>
 
-      {isRegistered && (
+      {/* {isRegistered && (
         <div>
           <p>Registration was successful! Go to login page...</p>
         </div>
-      )}
+      )} */}
     </>
   );
 };

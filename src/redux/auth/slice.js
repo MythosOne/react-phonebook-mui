@@ -4,7 +4,7 @@ import { logIn, logOut, refreshUser, register } from './operations';
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: { name: null, email: null },
+    user: { username: null, email: null },
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -17,6 +17,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
+        console.log('LogIn action payload:', action.payload);
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true
