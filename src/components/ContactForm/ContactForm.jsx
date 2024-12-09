@@ -5,7 +5,7 @@ import {
   AddContactForm,
   Container,
   StyledTextField,
-  StyledButton
+  StyledButton,
 } from './ContactForm.styled';
 import { Typography } from '@mui/material';
 import { AddIcCall } from '@mui/icons-material';
@@ -54,8 +54,12 @@ export const ContactForm = () => {
             name="name"
             label="Name"
             variant="filled"
-            inputProps={{inputMode: "text", pattern:"^[a-zA-Zа-яА-Я]+(([-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"}}
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            inputProps={{
+              inputMode: 'text',
+              pattern:
+                '^[a-zA-Zа-яА-Я]+(([\\s][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я]*)*$',
+            }}
+            title="Name may contain only letters, apostrophe and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             // required
           />
           <StyledTextField
@@ -64,7 +68,10 @@ export const ContactForm = () => {
             name="tel"
             label="Number phone"
             variant="filled"
-            inputProps={{inputMode: "tel", pattern:"\\d{3}[-]\\d{2}[-]\\d{2}"}}
+            inputProps={{
+              inputMode: 'tel',
+              pattern: '\\d{3}-\\d{2}-\\d{2}',
+            }}
             title="The phone number must consist of numbers and a dash ###-##-##"
             // required
           />
