@@ -27,7 +27,7 @@ export const ContactList = () => {
   return (
     <List sx={{ padding: '20px 20px 12px' }}>
       {visibleContacts.map(contact => (
-        <ListItem key={contact.id} sx={{ padding: '0 0 8px' }}>
+        <ListItem key={contact._id} sx={{ padding: '0 0 8px' }}>
           <ListItemAvatar>
             <Avatar sx={{ bgcolor: '#3f51b5' }}>
               <AccountCircle />
@@ -39,7 +39,7 @@ export const ContactList = () => {
               color="white"
               textshadow="2px 2px 4px black"
             >
-              {`${contact.name} : ${contact.number}`}
+              {`${contact.name} : ${contact.phone}`}
             </StyledTypography>
           </ListItemText>
           {
@@ -49,7 +49,7 @@ export const ContactList = () => {
               type="button"
               name="delete"
               onClick={() => {
-                dispatch(deleteContact(contact.id));
+                dispatch(deleteContact(contact._id));
               }}
             >
               Delete

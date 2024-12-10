@@ -19,7 +19,7 @@ export const ContactForm = () => {
 
     const form = event.currentTarget;
     const name = form.elements.name.value;
-    const number = form.elements.tel.value;
+    const phone = form.elements.tel.value;
 
     const loweredCase = name.toLowerCase().trim();
     const searchName = contacts.some(
@@ -34,7 +34,7 @@ export const ContactForm = () => {
       dispatch(
         addContact({
           name,
-          number,
+          phone,
         })
       );
     }
