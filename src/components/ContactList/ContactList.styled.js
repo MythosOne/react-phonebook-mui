@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Button, Typography } from '@mui/material';
 
-export const Message = styled.ul`
-  padding: 0;
+export const Message = styled.div`
+  padding: 0 20px 20px;
   text-align: center;
 
   font-size: 16px;
