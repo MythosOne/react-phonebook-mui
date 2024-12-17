@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'hooks';
 import { useState } from 'react';
 import { register } from 'redux/auth/operations';
 import {
@@ -24,6 +25,8 @@ import {
 import * as React from 'react';
 
 export const RegisterForm = () => {
+  const { isRegistered } = useAuth();
+  console.log(isRegistered);
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   // const [isRegistered, setIsRegistered] = useState(false);
@@ -129,11 +132,11 @@ export const RegisterForm = () => {
         </StyledButton>
       </AddRegisterForm>
 
-      {/* {isRegistered && (
+      {isRegistered && (
         <div>
           <p>Registration was successful! Go to login page...</p>
         </div>
-      )} */}
+      )}
     </>
   );
 };
