@@ -132,11 +132,11 @@ export const RegisterForm = () => {
         </StyledButton>
       </AddRegisterForm>
 
-      {isRegistered && (
+      {/* {isRegistered && (
         <div>
           <p>Registration was successful! Go to login page...</p>
         </div>
-      )}
+      )} */}
     </>
   );
 };
