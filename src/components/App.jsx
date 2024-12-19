@@ -14,12 +14,12 @@ const LoginPage = lazy(() => import('../pages/Login'));
 const Contacts = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //!!!
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);
+  }, [dispatch]); //!!!
 
   return isRefreshing ? (
     'Fetching user data...'
