@@ -11,15 +11,15 @@ import { PrivateRoute } from './PrivateRoute';
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
-const Contacts = lazy(() => import('../pages/Contacts'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
-  const dispatch = useDispatch(); //!!!
+  const dispatch = useDispatch(); 
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]); //!!!
+  }, [dispatch]);
 
   return isRefreshing ? (
     'Fetching user data...'
@@ -46,7 +46,7 @@ export const App = () => {
             <Route
               path="/contacts"
               element={
-                <PrivateRoute component={Contacts} redirectTo="/login" />
+                <PrivateRoute component={ContactsPage} redirectTo="/login" />
               }
             />
           </Route>

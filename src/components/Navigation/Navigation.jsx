@@ -2,7 +2,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { Link, HomeIcon } from './Navigation.styled';
 
 export const Navigation = () => {
-  const { isLoggedIn, isRegistered } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <nav>
@@ -10,7 +10,6 @@ export const Navigation = () => {
       <HomeIcon/>
         Home
       </Link>
-      {isRegistered && <Link to="/login">Login</Link>}
       {isLoggedIn && <Link to="/contacts">Contacts</Link>}
     </nav>
   );

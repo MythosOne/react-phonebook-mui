@@ -1,8 +1,4 @@
-import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
-import { useAuth } from 'hooks';
 import { useState } from 'react';
-import { register } from 'redux/auth/operations';
 import {
   AddRegisterForm,
   Container,
@@ -24,41 +20,20 @@ import {
 } from '@mui/icons-material';
 import * as React from 'react';
 
-export const RegisterForm = () => {
-  const { isRegistered } = useAuth();
-  console.log(isRegistered);
-  const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const [isRegistered, setIsRegistered] = useState(false);
+export const RegisterForm = ({ onSubmit }) => {
 
-  const handleSubmit = async event => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     const form = event.currentTarget;
 
-    // const registrationResult = await dispatch(
-    //   register({
-    //     username: form.elements.userName.value,
-    //     email: form.elements.email.value,
-    //     password: form.elements.password.value,
-    //   })
-    // );
+    const userData = {
+      username: form.elements.userName.value,
+      email: form.elements.email.value,
+      password: form.elements.password.value,
+    };
 
-    dispatch(
-      register({
-        username: form.elements.userName.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-
-    // console.log('registrationResult:', registrationResult);
-
-    // if (registrationResult.meta.requestStatus === 'fulfilled') {
-    //   setIsRegistered(true);
-    //   setTimeout(() => navigate('/login'), 3000);
-    //   console.log("I am worked")
-    // }
+    onSubmit(userData);
 
     form.reset();
   };
