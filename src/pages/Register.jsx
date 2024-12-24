@@ -21,9 +21,7 @@ const Register = () => {
   const handleRegister = async userData => {
     try {
       const resultAction = await dispatch(register(userData));
-      console.log('Result Action:', resultAction);
-      const result = unwrapResult(resultAction);
-      console.log('Registration successful:', result);
+      unwrapResult(resultAction);
       navigate('/login');
     } catch (error) {
       console.error('Registration failed. Please try again.', error);
