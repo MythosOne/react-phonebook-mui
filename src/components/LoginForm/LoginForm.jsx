@@ -1,5 +1,6 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { getIsLoading } from '../../redux/auth/selectors';
 import {
   AddLoginForm,
   Container,
@@ -15,10 +16,13 @@ import {
   InputLabel,
   Typography,
 } from '@mui/material';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 import * as React from 'react';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -43,19 +47,24 @@ export const LoginForm = () => {
 
   return (
     <>
-      <AddLoginForm onSubmit={handleSubmit}>
-        <Container>
-          <Typography variant="h4" fontWeight="400" color="white">
-            LOGIN
-          </Typography>
-          <StyledTextField
-            fullWidth
-            type="email"
-            name="email"
-            label="Email"
-            variant="filled"
-          />
-          {/* <StyledTextField
+      {isLoading ? (
+        <Stack spacing={2} direction="row" alignItems="center">
+          <CircularProgress size="60px" />
+        </Stack>
+      ) : (
+        <AddLoginForm onSubmit={handleSubmit}>
+          <Container>
+            <Typography variant="h4" fontWeight="400" color="white">
+              LOGIN
+            </Typography>
+            <StyledTextField
+              fullWidth
+              type="email"
+              name="email"
+              label="Email"
+              variant="filled"
+            />
+            {/* <StyledTextField
             sx={{ fontSize: '20px', color: '#fff' }}
             fullWidth
             type="password"
@@ -63,37 +72,38 @@ export const LoginForm = () => {
             label="Password"
             variant="filled"
           /> */}
-          <FormControl variant="filled" fullWidth>
-            <InputLabel sx={{ fontSize: '20px', color: '#fff' }}>
-              Password
-            </InputLabel>
-            <StyledFilledInput
-              type={showPassword ? 'text' : 'password'}
-              name="password"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    sx={{ color: '#fff' }}
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
+            <FormControl variant="filled" fullWidth>
+              <InputLabel sx={{ fontSize: '20px', color: '#fff' }}>
+                Password
+              </InputLabel>
+              <StyledFilledInput
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      sx={{ color: '#fff' }}
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
             </FormControl>
-        </Container>
-        <StyledButton
-          variant="contained"
-          startIcon={<AccountCircle />}
-          type="submit"
-        >
-          Log In
-        </StyledButton>
-      </AddLoginForm>
+          </Container>
+          <StyledButton
+            variant="contained"
+            startIcon={<AccountCircle />}
+            type="submit"
+          >
+            Log In
+          </StyledButton>
+        </AddLoginForm>
+      )}
     </>
   );
 };

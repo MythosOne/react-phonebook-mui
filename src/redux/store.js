@@ -10,7 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { authReducer } from './auth/slice';
+import { authReducer } from './auth/authSlice';
 import { contactsReducer} from './contacts/contactsSlice'
 
 const middleware = [

@@ -1,5 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { logIn, logOut, refreshUser, register } from './operations';
+
+const extraActions = [logIn, logOut, refreshUser, register];
+const getActions = type => extraActions.map(action => action[type]);
 
 const authSlice = createSlice({
   name: 'auth',
@@ -8,9 +11,10 @@ const authSlice = createSlice({
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    isLoading: false,
   },
-  extraReducers: builder =>
-    builder
+  extraReducers: builder => {
+    return builder
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         // state.token = action.payload.token;
@@ -20,7 +24,7 @@ const authSlice = createSlice({
         // console.log('LogIn action payload:', action.payload);
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLoggedIn = true
+        state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
@@ -38,6 +42,24 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       })
+      .addMatcher(isAnyOf(...getActions('pending')), state => {
+        // console.log('isAnyOf(...getActions(pending))');
+        // console.log('authSlice.isLoading:', state.isLoading);
+        state.isLoading = true;
+      })
+      .addMatcher(isAnyOf(...getActions('rejected')), (state, action) => {
+        // console.log('isAnyOf(...getActions(rejected))');
+        // console.log('authSlice.isLoading:', state.isLoading);
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addMatcher(isAnyOf(...getActions('fulfilled')), state => {
+        // console.log('isAnyOf(...getActions(fulfilled))');
+        // console.log('authSlice.isLoading:', state.isLoading);
+        state.isLoading = false;
+        state.error = null;
+      });
+  },
 });
 
 export const authReducer = authSlice.reducer;
