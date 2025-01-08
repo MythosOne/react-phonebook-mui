@@ -1,3 +1,4 @@
+import { forwardRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import { getIsLoading } from '../../redux/auth/selectors';
@@ -18,9 +19,8 @@ import {
 } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
-import * as React from 'react';
 
-export const LoginForm = () => {
+export const LoginForm = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
 
@@ -37,7 +37,7 @@ export const LoginForm = () => {
     form.reset();
   };
 
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(show => !show);
 
@@ -52,7 +52,7 @@ export const LoginForm = () => {
           <CircularProgress size="60px" />
         </Stack>
       ) : (
-        <AddLoginForm onSubmit={handleSubmit}>
+        <AddLoginForm onSubmit={handleSubmit} ref={ref} {...props}>
           <Container>
             <Typography variant="h4" fontWeight="400" color="white">
               LOGIN
@@ -106,4 +106,4 @@ export const LoginForm = () => {
       )}
     </>
   );
-};
+});
