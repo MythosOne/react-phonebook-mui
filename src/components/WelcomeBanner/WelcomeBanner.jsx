@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef } from 'react';
 import { Title, Img } from './WelcomeBanner.styled';
 import img from '../img/phone.png';
 
