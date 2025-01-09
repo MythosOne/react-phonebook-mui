@@ -1,4 +1,6 @@
-import img from '../components/img/book-159880.png'
+import { useRef } from 'react';
+import { Transition } from 'react-transition-group';
+import { WelcomeBanner } from 'components/WelcomeBanner/WelcomeBanner';
 
 const styles = {
   container: {
@@ -7,21 +9,32 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontWeight: 500,
-    fontSize: 54,
-    textAlign: 'center',
-    color: 'white',
+  initial: {
+    opacity: 0,
+    transform: 'translateY(-20px)',
+  },
+  entered: {
+    opacity: 1,
+    transform: 'translateY(0)',
+    transition: 'opacity 300ms ease-out, transform 300ms ease-out',
   },
 };
-
 const Home = () => {
+  const nodeRef = useRef(null);
+  
   return (
     <section style={styles.container}>
-      <h1 style={styles.title}>
-        Phone book manager welcome page{' '}
-        <img src={img} alt='Phonebook' width='240' />
-      </h1>
+      <Transition in={true} appear={true} timeout={300} nodeRef={nodeRef}>
+        {state => (
+          <WelcomeBanner
+            ref={nodeRef}
+            style={{
+              ...styles.initial,
+              ...(state === 'entered' && styles.entered),
+            }}
+          />
+        )}
+      </Transition>
     </section>
   );
 };
