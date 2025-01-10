@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Transition } from 'react-transition-group';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -37,13 +37,14 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '20px',
+    marginTop: '40px',
   },
 };
 
 const Contacts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
+  const nodeRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -51,9 +52,10 @@ const Contacts = () => {
 
   return (
     <section style={styles.section}>
-      <Transition in={true} appear={true} timeout={300}>
+      <Transition in={true} appear={true} timeout={300} nodeRef={nodeRef}>
         {state => (
           <div
+            ref={nodeRef}
             style={{
               ...styles.container,
               ...(state === 'entered' && { ...styles.entered }),
@@ -61,8 +63,9 @@ const Contacts = () => {
           >
             <ContactForm />
             <Filter />
+            <ContactList />
             <div style={styles.message}>
-              {isLoading ? 'Request in progress...👌' : <ContactList />}
+              {isLoading && 'Request in progress...👌'}
             </div>
           </div>
         )}

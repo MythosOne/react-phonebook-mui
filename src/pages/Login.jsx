@@ -6,9 +6,9 @@ const styles = {
   container: {
     minHeight: '60vh',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'top',
     justifyContent: 'center',
-    marginTop: '20px',
+    marginTop: '40px',
   },
   initial: {
     opacity: 0,
