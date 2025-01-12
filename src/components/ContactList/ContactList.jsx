@@ -1,15 +1,11 @@
-import { deleteContact } from '../../redux/contacts/operations';
+
+import { useSelector } from 'react-redux';
+
 import { getContacts, getFilter } from '../../redux/contacts/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { StyledButton, Message, StyledTypography } from './ContactList.styled';
-import {
-  List,
-  ListItem,
-  ListItemAvatar,
-  Avatar,
-  ListItemText,
-} from '@mui/material';
-import { AccountCircle, PersonRemove } from '@mui/icons-material';
+import { ContactItem } from 'components/ContactItem/ContactItem';
+
+import { Message} from './ContactList.styled';
+import { List } from '@mui/material';
 
 const filterContacts = (items, filter) => {
   return items.filter(contacts =>
@@ -20,9 +16,10 @@ const filterContacts = (items, filter) => {
 export const ContactList = () => {
   const filter = useSelector(getFilter);
   const contacts = useSelector(getContacts);
-  const dispatch = useDispatch();
 
   const visibleContacts = filterContacts(contacts, filter);
+
+
 
   return (
     <>
@@ -31,35 +28,7 @@ export const ContactList = () => {
       ) : (
         <List sx={{ padding: '20px 20px 12px' }}>
           {visibleContacts.map(contact => (
-            <ListItem key={contact._id} sx={{ padding: '0 0 8px' }}>
-              <ListItemAvatar>
-                <Avatar sx={{ bgcolor: '#3f51b5' }}>
-                  <AccountCircle />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText>
-                <StyledTypography
-                  fontSize="18px"
-                  color="white"
-                  textshadow="2px 2px 4px black"
-                >
-                  {`${contact.name} : ${contact.phone}`}
-                </StyledTypography>
-              </ListItemText>
-              {
-                <StyledButton
-                  variant="outlined"
-                  startIcon={<PersonRemove />}
-                  type="button"
-                  name="delete"
-                  onClick={() => {
-                    dispatch(deleteContact(contact._id));
-                  }}
-                >
-                  Delete
-                </StyledButton>
-              }
-            </ListItem>
+            <ContactItem key={contact._id} contact={contact} />
           ))}
         </List>
       )}
