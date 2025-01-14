@@ -26,7 +26,7 @@ const styles = {
     transition: 'opacity 300ms ease-out, transform 300ms ease-out',
   },
   message: {
-    padding: '0',
+    padding: '0 20px 20px',
     textAlign: 'center',
     fontSize: '16px',
     fontWeight: '600',

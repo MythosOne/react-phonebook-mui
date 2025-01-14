@@ -21,11 +21,11 @@ const styles = {
   exited: {
     opacity: 0,
     transform: 'translateY(-20px)',
-    // transition: 'opacity 300ms ease-out, transform 300ms ease-out',
+    transition: 'opacity 300ms ease-out, transform 300ms ease-out',
   },
 };
 
-export const ContactItem = ({contact}) => {
+export const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
   const nodeRef = useRef(null);
   const [isShowContact, setIsShowContact] = useState(true);
@@ -50,7 +50,9 @@ export const ContactItem = ({contact}) => {
             style={{
               padding: '0 0 8px',
               ...styles.container,
-              ...(state === 'entered' && { ...styles.entered }),
+              ...(state === 'entered'
+                ? { ...styles.entered }
+                : { ...styles.exited }),
             }}
           >
             <ListItemAvatar>

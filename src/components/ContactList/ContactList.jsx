@@ -1,7 +1,7 @@
 
 import { useSelector } from 'react-redux';
 
-import { getContacts, getFilter } from '../../redux/contacts/selectors';
+import { getContacts, getFilter, getIsLoading } from '../../redux/contacts/selectors';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
 import { Message} from './ContactList.styled';
@@ -16,6 +16,7 @@ const filterContacts = (items, filter) => {
 export const ContactList = () => {
   const filter = useSelector(getFilter);
   const contacts = useSelector(getContacts);
+  const isLoading = useSelector(getIsLoading);
 
   const visibleContacts = filterContacts(contacts, filter);
 
@@ -23,7 +24,7 @@ export const ContactList = () => {
 
   return (
     <>
-      {contacts.length === 0 ? (
+      {!isLoading && contacts.length === 0 ? (
         <Message>You do not have contacts 😯</Message>
       ) : (
         <List sx={{ padding: '20px 20px 12px' }}>
