@@ -23,3 +23,24 @@ export const StyledTypography = styled(Typography)`
   text-shadow: 2px 2px 4px black;
 `;
 
+export const baseStyles = {
+  transition: 'opacity 300ms ease-out, transform 300ms ease-out',
+};
+
+export const styles = {
+  container: {
+    opacity: 0,
+    transform: 'translateY(-20px)',
+  },
+  entered: {
+    opacity: 1,
+    transform: 'translateY(0)',
+    ...baseStyles,
+  },
+  exited: {
+    opacity: 0,
+    transform: 'translateY(-20px)',
+    ...baseStyles,
+  },
+};
+

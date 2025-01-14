@@ -64,9 +64,9 @@ const Contacts = () => {
             <ContactForm />
             <Filter />
             <ContactList />
-            <div style={styles.message}>
-              {isLoading && 'Request in progress...👌'}
-            </div>
+            {isLoading && (
+              <div style={styles.message}>Request in progress...👌</div>
+            )}
           </div>
         )}
       </Transition>

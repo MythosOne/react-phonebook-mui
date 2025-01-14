@@ -20,8 +20,6 @@ export const ContactList = () => {
 
   const visibleContacts = filterContacts(contacts, filter);
 
-
-
   return (
     <>
       {!isLoading && contacts.length === 0 ? (
