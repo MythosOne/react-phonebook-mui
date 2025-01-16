@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Transition } from 'react-transition-group';
 
-import { deleteContact } from '../../redux/contacts/operations';
+import { deleteContact } from 'redux/contacts/operations';
 
 import { ListItem, ListItemAvatar, Avatar, ListItemText } from '@mui/material';
 import { AccountCircle, PersonRemove } from '@mui/icons-material';
@@ -15,10 +15,8 @@ export const ContactItem = ({ contact }) => {
   const [isShowContact, setIsShowContact] = useState(true);
 
   const handleDelete = contactId => {
+    dispatch(deleteContact(contactId));
     setIsShowContact(false);
-    setTimeout(() => {
-      dispatch(deleteContact(contactId));
-    }, 300);
   };
 
   return (

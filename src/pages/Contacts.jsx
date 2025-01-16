@@ -2,10 +2,10 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Transition } from 'react-transition-group';
 import { fetchContacts } from 'redux/contacts/operations';
-import { ContactForm } from '../components/ContactForm/ContactForm';
-import { ContactList } from '../components/ContactList/ContactList';
-import { Filter } from '../components/Filter/Filter';
-import { getIsLoading } from '../redux/contacts/selectors';
+import { ContactForm } from 'components/ContactForm/ContactForm';
+import { ContactList } from 'components/ContactList/ContactList';
+import { Filter } from 'components/Filter/Filter';
+import { getIsLoading } from 'redux/contacts/selectors';
 
 const styles = {
   container: {
