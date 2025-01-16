@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Transition } from 'react-transition-group';
 
 import { deleteContact } from 'redux/contacts/operations';
+import { DeleteConfirmationModal } from '../Modal/DeleteConfirmationModal';
 
 import { ListItem, ListItemAvatar, Avatar, ListItemText } from '@mui/material';
 import { AccountCircle, PersonRemove } from '@mui/icons-material';
@@ -13,10 +14,12 @@ export const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
   const nodeRef = useRef(null);
   const [isShowContact, setIsShowContact] = useState(true);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const handleDelete = contactId => {
     dispatch(deleteContact(contactId));
     setIsShowContact(false);
+    setIsOpenModal(false);
   };
 
   return (
@@ -60,12 +63,18 @@ export const ContactItem = ({ contact }) => {
                 type="button"
                 name="delete"
                 onClick={() => {
-                  handleDelete(contact._id);
+                  setIsOpenModal(true);
+                  // handleDelete(contact._id);
                 }}
               >
                 Delete
               </StyledButton>
             }
+            <DeleteConfirmationModal
+              open={isOpenModal}
+              onClose={() => setIsOpenModal(false)}
+              onConfirm={() => handleDelete(contact._id)}
+            />
           </ListItem>
         )}
       </Transition>
