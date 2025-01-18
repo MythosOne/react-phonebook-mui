@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 import { Button, Typography } from '@mui/material';
 
 export const StyledButton = styled(Button)`
@@ -43,4 +43,3 @@ export const styles = {
     ...baseStyles,
   },
 };
-

@@ -54,6 +54,7 @@ export const DeleteConfirmationModal = ({ open, onClose, onConfirm }) => {
           sx={{
             fontSize: '14px',
             color: 'white',
+            fontWeight: 'bold',
             textShadow: '2px 2px 4px black',
             '&:hover': {
               transform: 'scale(1.05)',
@@ -70,6 +71,7 @@ export const DeleteConfirmationModal = ({ open, onClose, onConfirm }) => {
             textShadow: '2px 2px 4px black',
             '&:hover': {
               color: 'red',
+              fontWeight: 'bold',
               transform: 'scale(1.05)',
             },
           }}

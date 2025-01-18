@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { WelcomeBanner } from 'components/WelcomeBanner/WelcomeBanner';
 
@@ -19,19 +19,26 @@ const styles = {
     transition: 'opacity 300ms ease-out, transform 300ms ease-out',
   },
 };
+
 const Home = () => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const nodeRef = useRef(null);
-  
+
+  const handleImageLoaded = () => {
+    setIsImageLoaded(true);
+  };
+
   return (
     <section style={styles.container}>
-      <Transition in={true} appear={true} timeout={300} nodeRef={nodeRef}>
-        {state => (
+      <Transition in={isImageLoaded} timeout={300} nodeRef={nodeRef}>
+        {(state) => (
           <WelcomeBanner
             ref={nodeRef}
             style={{
               ...styles.initial,
               ...(state === 'entered' && styles.entered),
             }}
+            onImageLoad={handleImageLoaded}
           />
         )}
       </Transition>

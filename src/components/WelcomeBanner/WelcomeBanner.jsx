@@ -1,14 +1,17 @@
 import { forwardRef } from 'react';
-import { Title, Img } from './WelcomeBanner.styled';
+import { Wrapper, Title, Img } from './WelcomeBanner.styled';
 import img from '../img/phone.png';
 
-export const WelcomeBanner = forwardRef((props, ref) => {
+export const WelcomeBanner = forwardRef(({ onImageLoad, style }, ref) => {
   return (
-    <>
-      <Title ref={ref} {...props}>
-        Phone book manager welcome page
-        <Img src={img} alt="Phonebook" loading="lazy" />
-      </Title>
-    </>
+    <Wrapper ref={ref} style={style}>
+      <Title>Phone book manager welcome page</Title>
+      <Img
+        src={img}
+        alt="Phonebook"
+        loading="lazy"
+        onLoad={onImageLoad}
+      />
+    </Wrapper>
   );
 });

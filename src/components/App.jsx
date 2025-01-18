@@ -7,6 +7,9 @@ import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
+import { NotFound } from 'pages/NotFound';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -14,7 +17,7 @@ const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
@@ -22,35 +25,35 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    'Fetching user data...'
+    <Stack spacing={2} direction="row" alignItems="center">
+      <CircularProgress size="60px" />
+    </Stack>
   ) : (
-      <Container>
-        <Routes>
-          <Route path="/" element={<SharedLayout />}>
-            <Route index element={<HomePage />} />
-            <Route
-              path="/register"
-              element={
-                <RestrictedRoute
-                  component={RegisterPage}
-                  redirectTo="/login"
-                />
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
-              }
-            />
-            <Route
-              path="/contacts"
-              element={
-                <PrivateRoute component={ContactsPage} redirectTo="/login" />
-              }
-            />
-          </Route>
-        </Routes>
-      </Container>
+    <Container>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute component={RegisterPage} redirectTo="/login" />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute component={ContactsPage} redirectTo="/login" />
+            }
+          />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Container>
   );
 };
