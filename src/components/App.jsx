@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import { SharedLayout } from './SharedLayout';
-import { Container } from './App.styled';
+import { LoadingContainer, LoadingText, Container } from './App.styled';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
@@ -25,9 +25,17 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Stack spacing={2} direction="row" alignItems="center">
-      <CircularProgress size="60px" />
-    </Stack>
+    <LoadingContainer>
+      <LoadingText>Fetching user data...</LoadingText>
+      <Stack
+        spacing={2}
+        direction="row"
+        alignItems="center"
+        sx={{ display: 'flex', flexDirection: 'column' }}
+      >
+        <CircularProgress size="60px" />
+      </Stack>
+    </LoadingContainer>
   ) : (
     <Container>
       <Routes>
