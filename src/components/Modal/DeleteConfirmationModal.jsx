@@ -83,5 +83,3 @@ export const DeleteConfirmationModal = ({ open, onClose, onConfirm }) => {
     </Dialog>
   );
 };
-
-export default DeleteConfirmationModal;
