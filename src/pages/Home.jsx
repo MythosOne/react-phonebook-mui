@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react';
+
+import { ErrorModal } from 'components/Modal/ErrorModal';
 import { Transition } from 'react-transition-group';
 import { WelcomeBanner } from 'components/WelcomeBanner/WelcomeBanner';
 
@@ -42,6 +44,7 @@ const Home = () => {
           />
         )}
       </Transition>
+      <ErrorModal/>
     </section>
   );
 };
