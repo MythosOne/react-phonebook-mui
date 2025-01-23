@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { showError } from '../auth/authSlice';
 
-axios.defaults.baseURL = 'https://contacts-reader-backend-7k84.onrender.com/api';
+axios.defaults.baseURL =
+  'https://contacts-reader-backend-7k84.onrender.com/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -32,7 +34,13 @@ export const logIn = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      alert('Login error');
+      thunkAPI.dispatch(
+        showError({
+          title: 'Authentication failed',
+          message: 'Please check your login details and try again',
+        })
+      );
+      // alert('Login error');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

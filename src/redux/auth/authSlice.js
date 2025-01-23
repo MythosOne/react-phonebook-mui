@@ -12,7 +12,23 @@ const authSlice = createSlice({
     isLoggedIn: false,
     isRefreshing: false,
     isLoading: false,
+    error: null,
   },
+
+  reducers: {
+    showError(state, action) {
+      const { title, message } = action.payload;
+      state.open = true;
+      state.title = title;
+      state.message = message;
+    },
+    hideError(state) {
+      state.open = false;
+      state.title = '';
+      state.message = '';
+    },
+  },
+
   extraReducers: builder => {
     return builder
       .addCase(register.fulfilled, (state, action) => {
@@ -61,5 +77,7 @@ const authSlice = createSlice({
       });
   },
 });
+
+export const { showError, hideError } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

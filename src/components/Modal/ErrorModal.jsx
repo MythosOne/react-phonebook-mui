@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from "prop-types";
 
 import {
   Dialog,
@@ -10,15 +11,15 @@ import {
 } from '@mui/material';
 import WarningIcon from '@mui/icons-material/Warning';
 
-export const ErrorModal = ({ /*open, onClose,*/ onConfirm }) => {
+export const ErrorModal = ({ /*open, onClose,*/ title, message, onConfirm }) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const onClose = () => {
-    setOpen(false);
-  };
+  // const onClose = () => {
+  //   setOpen(false);
+  // };
   return (
     <>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -26,12 +27,13 @@ export const ErrorModal = ({ /*open, onClose,*/ onConfirm }) => {
       </Button>
       <Dialog
         open={open}
-        onClose={onClose}
+        onClose={onConfirm}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         sx={{
           '& .MuiPaper-root': {
             width: '40%',
+            minWidth: '300px',
             maxWidth: '444px',
             backgroundColor: 'transparent',
             border: '1px solid rgb(236, 236, 236)',
@@ -54,7 +56,7 @@ export const ErrorModal = ({ /*open, onClose,*/ onConfirm }) => {
           }}
         >
           <WarningIcon />
-          Attention
+          Authentication failed :({title})
         </DialogTitle>
         <DialogContent>
           <DialogContentText
@@ -65,7 +67,7 @@ export const ErrorModal = ({ /*open, onClose,*/ onConfirm }) => {
               textShadow: '2px 2px 4px black',
             }}
           >
-            Email or password is wrong
+            Please check your login details and try again : ({message})
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -104,4 +106,12 @@ export const ErrorModal = ({ /*open, onClose,*/ onConfirm }) => {
       </Dialog>
     </>
   );
+};
+
+ErrorModal.propTypes = {
+  open: PropTypes.bool.isRequired, 
+  title: PropTypes.string,        
+  message: PropTypes.string.isRequired, 
+  onClose: PropTypes.func.isRequired,   
+  icon: PropTypes.elementType,          
 };
