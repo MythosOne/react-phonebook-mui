@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import PropTypes from "prop-types";
+// import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Dialog,
@@ -9,22 +9,12 @@ import {
   DialogTitle,
   Button,
 } from '@mui/material';
+
 import WarningIcon from '@mui/icons-material/Warning';
 
-export const ErrorModal = ({ /*open, onClose,*/ title, message, onConfirm }) => {
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  // const onClose = () => {
-  //   setOpen(false);
-  // };
+export const ErrorModal = ({ open, title, message, onConfirm }) => {
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open dialog
-      </Button>
       <Dialog
         open={open}
         onClose={onConfirm}
@@ -49,16 +39,17 @@ export const ErrorModal = ({ /*open, onClose,*/ title, message, onConfirm }) => 
           sx={{
             fontSize: '20px',
             fontWeight: 'bold',
+            padding: '10px 14px',
             color: '#d32f2f',
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
           }}
         >
-          <WarningIcon />
-          Authentication failed :({title})
+          <WarningIcon viewBox= '0 0 24 26'/>
+          {title}
         </DialogTitle>
-        <DialogContent>
+        <DialogContent sx={{ padding: '10px 14px' }}>
           <DialogContentText
             id="alert-dialog-description"
             sx={{
@@ -67,12 +58,12 @@ export const ErrorModal = ({ /*open, onClose,*/ title, message, onConfirm }) => 
               textShadow: '2px 2px 4px black',
             }}
           >
-            Please check your login details and try again : ({message})
+            {message}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          {/* <Button
-            onClick={onClose}
+          <Button
+            onClick={onConfirm}
             color="primary"
             sx={{
               fontSize: '14px',
@@ -80,21 +71,6 @@ export const ErrorModal = ({ /*open, onClose,*/ title, message, onConfirm }) => 
               fontWeight: 'bold',
               textShadow: '2px 2px 4px black',
               '&:hover': {
-                transform: 'scale(1.05)',
-              },
-            }}
-          >
-            To correct
-          </Button> */}
-          <Button
-            onClick={onConfirm}
-            color="primary"
-            sx={{
-              fontSize: '14px',
-              color: 'white',
-              textShadow: '2px 2px 4px black',
-              '&:hover': {
-                fontWeight: 'bold',
                 transform: 'scale(1.05)',
               },
             }}
@@ -109,9 +85,9 @@ export const ErrorModal = ({ /*open, onClose,*/ title, message, onConfirm }) => 
 };
 
 ErrorModal.propTypes = {
-  open: PropTypes.bool.isRequired, 
-  title: PropTypes.string,        
-  message: PropTypes.string.isRequired, 
-  onClose: PropTypes.func.isRequired,   
-  icon: PropTypes.elementType,          
+  open: PropTypes.bool.isRequired,
+  title: PropTypes.string,
+  message: PropTypes.string.isRequired,
+  onConfirm: PropTypes.func.isRequired,
+  icon: PropTypes.elementType,
 };

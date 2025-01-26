@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import {
   Dialog,
   DialogActions,
@@ -7,7 +9,10 @@ import {
   Button,
 } from '@mui/material';
 
+import WarningIcon from '@mui/icons-material/Warning';
+
 export const DeleteConfirmationModal = ({ open, onClose, onConfirm }) => {
+  console.log('open:' + open, ' onClose' + onClose, ' onConfirm' + onConfirm);
   return (
     <Dialog
       open={open}
@@ -16,7 +21,8 @@ export const DeleteConfirmationModal = ({ open, onClose, onConfirm }) => {
       aria-describedby="alert-dialog-description"
       sx={{
         '& .MuiPaper-root': {
-          width: '90%',
+          width: '40%',
+          minWidth: '300px',
           maxWidth: '444px',
           backgroundColor: 'transparent',
           border: '1px solid rgb(236, 236, 236)',
@@ -29,11 +35,20 @@ export const DeleteConfirmationModal = ({ open, onClose, onConfirm }) => {
     >
       <DialogTitle
         id="alert-dialog-title"
-        sx={{ fontSize: '20px', fontWeight: 'bold', color: '#d32f2f' }}
+        sx={{
+          fontSize: '20px',
+          padding: '10px 14px',
+          fontWeight: 'bold',
+          color: '#d32f2f',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+        }}
       >
+        <WarningIcon viewBox="0 0 24 26" />
         Deletion confirmation
       </DialogTitle>
-      <DialogContent>
+      <DialogContent sx={{ padding: '10px 14px' }}>
         <DialogContentText
           id="alert-dialog-description"
           sx={{
@@ -81,4 +96,10 @@ export const DeleteConfirmationModal = ({ open, onClose, onConfirm }) => {
       </DialogActions>
     </Dialog>
   );
+};
+
+DeleteConfirmationModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
 };

@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { ErrorModal } from '../Modal/ErrorModal';
-import { hideError } from 'redux/auth/authSlice';
+import { hideError } from 'redux/error/errorSlice';
+import { selectError } from 'redux/error/selectors';
 export const GlobalErrorHandling = () => {
-  const { error } = useSelector(state => state.auth);
+  const { open , title, message } = useSelector(selectError);
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -11,9 +12,9 @@ export const GlobalErrorHandling = () => {
   };
 
   return (
-    error && (
+    open && (
       <ErrorModal
-        open={Boolean(error)}
+        open={open}
         title={title}
         message={message}
         onConfirm={handleClose}

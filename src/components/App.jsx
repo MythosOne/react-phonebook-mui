@@ -10,6 +10,7 @@ import { PrivateRoute } from './PrivateRoute';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
 import { NotFound } from 'pages/NotFound';
+import { GlobalErrorHandling } from './ErrorHandling/ErrorHandling';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -62,6 +63,7 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <GlobalErrorHandling/>
     </Container>
   );
 };

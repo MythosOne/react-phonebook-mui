@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { showError } from '../auth/authSlice';
+import { showError } from '../error/errorSlice';
 
 axios.defaults.baseURL =
   'https://contacts-reader-backend-7k84.onrender.com/api';
