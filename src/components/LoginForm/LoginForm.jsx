@@ -64,14 +64,6 @@ export const LoginForm = forwardRef((props, ref) => {
               label="Email"
               variant="filled"
             />
-            {/* <StyledTextField
-            sx={{ fontSize: '20px', color: '#fff' }}
-            fullWidth
-            type="password"
-            name="password"
-            label="Password"
-            variant="filled"
-          /> */}
             <FormControl variant="filled" fullWidth>
               <InputLabel sx={{ fontSize: '20px', color: '#fff' }}>
                 Password

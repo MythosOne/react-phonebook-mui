@@ -27,7 +27,7 @@ export const register = createAsyncThunk(
           message: 'Please try again',
         })
       );
-      // return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -57,6 +57,12 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     clearAuthHeader();
   } catch (error) {
+    thunkAPI.dispatch(
+      showError({
+        title: 'Logout failed',
+        message: 'Please try again',
+      })
+    );
     return thunkAPI.rejectWithValue(error.message);
   }
 });
