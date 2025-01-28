@@ -21,7 +21,7 @@ export const DeleteConfirmationModal = ({ open, onClose, onConfirm }) => {
       aria-describedby="alert-dialog-description"
       sx={{
         '& .MuiPaper-root': {
-          width: '40%',
+          width: '50%',
           minWidth: '300px',
           maxWidth: '444px',
           backgroundColor: 'transparent',

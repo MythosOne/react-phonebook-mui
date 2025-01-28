@@ -22,7 +22,7 @@ export const ErrorModal = ({ open, title, message, onConfirm }) => {
         aria-describedby="alert-dialog-description"
         sx={{
           '& .MuiPaper-root': {
-            width: '40%',
+            width: '50%',
             minWidth: '300px',
             maxWidth: '444px',
             backgroundColor: 'transparent',
@@ -86,8 +86,7 @@ export const ErrorModal = ({ open, title, message, onConfirm }) => {
 
 ErrorModal.propTypes = {
   open: PropTypes.bool.isRequired,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onConfirm: PropTypes.func.isRequired,
-  icon: PropTypes.elementType,
 };

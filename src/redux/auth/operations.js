@@ -21,7 +21,13 @@ export const register = createAsyncThunk(
       // setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      thunkAPI.dispatch(
+        showError({
+          title: 'Registration failed',
+          message: 'Please try again',
+        })
+      );
+      // return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
