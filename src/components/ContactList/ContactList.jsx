@@ -46,7 +46,18 @@ export const ContactList = () => {
               <ContactItem key={contact._id} contact={contact} />
             ))}
           </List>
-          <Pagination count={Math.ceil(contacts.length / itemsPerPage)} page={page} onChange={handleChange}/>
+          <Pagination
+            count={Math.ceil(contacts.length / itemsPerPage)}
+            page={page}
+            onChange={handleChange}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              padding: '5px',
+              '& .MuiPaginationItem-previousNext': { color: '#3f51b5' },
+              '& .MuiPaginationItem-page': { color: '#3f51b5' },
+            }}
+          />
         </>
       )}
     </>
