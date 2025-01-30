@@ -1,7 +1,7 @@
 import { forwardRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import { getIsLoading } from '../../redux/auth/selectors';
+import { selectIsLoading } from '../../redux/auth/selectors';
 import {
   AddLoginForm,
   Container,
@@ -22,7 +22,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 export const LoginForm = forwardRef((props, ref) => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(selectIsLoading);
 
   const handleSubmit = event => {
     event.preventDefault();

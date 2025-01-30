@@ -1,6 +1,6 @@
 import { forwardRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getIsLoading } from '../../redux/auth/selectors';
+import { selectIsLoading } from '../../redux/auth/selectors';
 import {
   AddRegisterForm,
   Container,
@@ -24,7 +24,7 @@ import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
 
 export const RegisterForm = forwardRef(({ onSubmit, ...props }, ref) => {
-  const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(selectIsLoading);
   const handleSubmit = event => {
     event.preventDefault();
 

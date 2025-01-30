@@ -5,7 +5,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { getIsLoading } from 'redux/contacts/selectors';
+import { selectIsLoading } from 'redux/contacts/selectors';
 
 const styles = {
   container: {
@@ -43,7 +43,7 @@ const styles = {
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(selectIsLoading);
   const nodeRef = useRef(null);
 
   useEffect(() => {

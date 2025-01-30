@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from '../../redux/contacts/selectors';
+import { selectFilter } from '../../redux/contacts/selectors';
 import { setFilter } from '../../redux/contacts/contactsSlice';
 import { Typography } from '@mui/material';
 import {
@@ -9,7 +9,7 @@ import {
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
 
   return (
     <ContainerFilter>

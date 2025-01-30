@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
-import { getContacts } from '../../redux/contacts/selectors';
+import { selectContacts } from '../../redux/contacts/selectors';
 import {
   AddContactForm,
   Container,
@@ -12,7 +12,7 @@ import { AddIcCall } from '@mui/icons-material';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = event => {
     event.preventDefault();

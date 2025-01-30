@@ -12,7 +12,6 @@ import {
 import WarningIcon from '@mui/icons-material/Warning';
 
 export const DeleteConfirmationModal = ({ open, onClose, onConfirm }) => {
-  console.log('open:' + open, ' onClose' + onClose, ' onConfirm' + onConfirm);
   return (
     <Dialog
       open={open}
