@@ -2,8 +2,10 @@ import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { register } from '../redux/auth/operations';
-import { RegisterForm } from '../components/RegisterForm/RegisterForm';
+
+import { register } from 'redux/auth/operations';
+import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+
 import { Transition } from 'react-transition-group';
 
 const styles = {

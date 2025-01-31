@@ -1,4 +1,5 @@
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from 'hooks/useAuth';
+
 import { Link, HomeIcon } from './Navigation.styled';
 
 export const Navigation = () => {

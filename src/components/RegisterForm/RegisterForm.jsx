@@ -1,6 +1,8 @@
 import { forwardRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectIsLoading } from '../../redux/auth/selectors';
+
+import { selectIsLoading } from 'redux/auth/selectors';
+
 import {
   AddRegisterForm,
   Container,

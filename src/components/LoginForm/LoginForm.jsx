@@ -1,7 +1,9 @@
 import { forwardRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { logIn } from 'redux/auth/operations';
-import { selectIsLoading } from '../../redux/auth/selectors';
+import { selectIsLoading } from 'redux/auth/selectors';
+
 import {
   AddLoginForm,
   Container,

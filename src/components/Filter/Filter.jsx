@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import { selectFilter } from '../../redux/contacts/selectors';
 import { setFilter } from '../../redux/contacts/contactsSlice';
+
 import { Typography } from '@mui/material';
 import {
   ContainerFilter,

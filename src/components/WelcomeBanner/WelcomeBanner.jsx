@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+
 import { Wrapper, Title, Img } from './WelcomeBanner.styled';
 import img from '../img/phone.png';
 
