@@ -8,7 +8,7 @@ export const ContainerFilter = styled.div`
   align-items: center;
   gap: 20px;
 
-  padding: 20px;
+  padding: 0 20px;
 `;
 
 export const StyledTextField = styled(TextField)`

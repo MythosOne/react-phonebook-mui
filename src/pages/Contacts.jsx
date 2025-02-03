@@ -38,7 +38,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '40px',
+    // marginTop: '40px',
   },
 };
 

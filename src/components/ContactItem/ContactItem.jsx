@@ -36,7 +36,7 @@ export const ContactItem = ({ contact }) => {
           <ListItem
             ref={nodeRef}
             style={{
-              padding: '0 0 8px',
+              padding: '0 0 5px',
               ...styles.container,
               ...(state === 'entered'
                 ? { ...styles.entered }

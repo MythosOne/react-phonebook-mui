@@ -51,7 +51,7 @@ export const ContactList = () => {
         <Message>You do not have contacts 😯</Message>
       ) : (
         <>
-          <List sx={{ padding: '20px 20px 12px' }}>
+          <List sx={{ padding: '20px 20px 0' }}>
             {currentItems.map(contact => (
               <ContactItem key={contact._id} contact={contact} />
             ))}

@@ -14,7 +14,7 @@ const styles = {
     display: 'flex',
     alignItems: 'top',
     justifyContent: 'center',
-    marginTop: '40px',
+    // marginTop: '40px',
   },
   initial: {
     opacity: 0,

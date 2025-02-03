@@ -64,11 +64,13 @@ export const RegisterForm = forwardRef(({ onSubmit, ...props }, ref) => {
               REGISTER
             </Typography>
             <StyledTextField
+              autoFocus
               fullWidth
-              type="userName"
+              type="text"
               name="userName"
               label="User Name"
               variant="filled"
+              autoCapitalize='username'
             />
             <StyledTextField
               fullWidth
@@ -76,6 +78,7 @@ export const RegisterForm = forwardRef(({ onSubmit, ...props }, ref) => {
               name="email"
               label="Email"
               variant="filled"
+              autoComplete='email'
             />
             <FormControl variant="filled" fullWidth>
               <InputLabel sx={{ fontSize: '20px', color: '#fff' }}>
@@ -85,6 +88,8 @@ export const RegisterForm = forwardRef(({ onSubmit, ...props }, ref) => {
                 sx={{ fontSize: '20px', color: '#fff' }}
                 type={showPassword ? 'text' : 'password'}
                 name="password"
+                autoComplete='new-password'
+                inputProps={{ minLength: 10 }}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton

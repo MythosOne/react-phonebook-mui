@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Button, TextField, FilledInput } from '@mui/material';
 
 export const AddLoginForm = styled.form`
-  width: 400px;
+  /* width: 400px; */
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -13,6 +13,14 @@ export const AddLoginForm = styled.form`
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   backdrop-filter: blur(10px);
   /* margin-bottom: 20px; */
+
+  @media screen and (min-width: 767px) and (max-width: 1279px) {
+    width: 340px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 400px;
+  }
 `;
 
 export const Container = styled.div`

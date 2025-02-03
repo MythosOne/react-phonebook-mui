@@ -2,6 +2,12 @@ import styled from '@emotion/styled';
 
 export const Header = styled.header`
   display: flex;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  /* width: 70%; */
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
@@ -12,5 +18,14 @@ export const Header = styled.header`
 
   > nav {
     display: flex;
+  }
+
+  @media screen and (min-width: 767px) and (max-width: 1279px) {
+    width: 90%;
+    max-width: 800px;
+  }
+
+  @media screen and (min-width: 1280px){
+    width: 70%;
   }
 `;

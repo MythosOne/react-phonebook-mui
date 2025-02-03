@@ -14,7 +14,15 @@ export const AddRegisterForm = styled.form`
   backdrop-filter: blur(10px);
   /* margin-bottom: 20px; */
 
-  transition: 0.5s;
+  /* transition: 0.5s; */
+
+  @media screen and (min-width: 767px) and (max-width: 1279px) {
+    width: 340px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 400px;
+  }
 `;
 
 export const Container = styled.div`

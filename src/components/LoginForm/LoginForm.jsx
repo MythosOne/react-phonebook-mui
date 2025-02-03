@@ -60,6 +60,7 @@ export const LoginForm = forwardRef((props, ref) => {
               LOGIN
             </Typography>
             <StyledTextField
+              autoFocus
               fullWidth
               type="email"
               name="email"
@@ -73,6 +74,8 @@ export const LoginForm = forwardRef((props, ref) => {
               <StyledFilledInput
                 type={showPassword ? 'text' : 'password'}
                 name="password"
+                autoComplete="current-password"
+                inputProps={{ minLength: 10 }}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
