@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import styled from '@emotion/styled';
 import { Transition } from 'react-transition-group';
@@ -38,7 +39,7 @@ const HomeLink = styled(Link)`
   }
 `;
 
-export const NotFound = () => {
+export const ErrorPage = ({ showLink, title, message }) => {
   const nodeRef = useRef(null);
   return (
     <>
@@ -52,12 +53,18 @@ export const NotFound = () => {
               ...(state === 'entered' && { opacity: 1 }),
             }}
           >
-            <Title>404 - Page not found</Title>
-            <Message>We couldn't find the page you were looking for.</Message>
-            <HomeLink to="/">Return to home</HomeLink>
+            <Title>{title}</Title>
+            <Message>{message}</Message>
+            {showLink && <HomeLink to="/">Return to home</HomeLink>}
           </NotFoundContainer>
         )}
       </Transition>
     </>
   );
+};
+
+ErrorPage.propTypes = {
+  title: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  showLink: PropTypes.bool.isRequired,
 };

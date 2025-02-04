@@ -1,15 +1,15 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import { SharedLayout } from './SharedLayout';
 import { LoadingContainer, LoadingText, Container } from './App.styled';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
-import { useAuth } from 'hooks';
+import { useAuth, useWindowSize } from 'hooks';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
-import { NotFound } from 'pages/NotFound';
+import { ErrorPage } from 'pages/ErrorPage';
 import { GlobalErrorHandling } from './ErrorHandling/ErrorHandling';
 
 const HomePage = lazy(() => import('pages/Home'));
@@ -19,19 +19,25 @@ const ContactsPage = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const width = useWindowSize();
   const { isRefreshing } = useAuth();
-
-  const isMobile = window.innerWidth < 768;
-
-  useEffect(() => {
-    if (isMobile) {
-      return console.log("Mobile is not supported");
-    }
-  }, [isMobile]);
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (width < 768) {
+      // if (window.location.pathname !== '/error') {
+        navigate('/error');
+      // }
+    } else {
+      // if (window.location.pathname === '/error') {
+        navigate('/');
+      // }
+    }
+  }, [width, navigate]);
 
   return isRefreshing ? (
     <LoadingContainer>
@@ -69,7 +75,26 @@ export const App = () => {
             }
           />
         </Route>
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="*"
+          element={
+            <ErrorPage
+              title="404 - Page not found"
+              message="We couldn't find the page you were looking for."
+              showLink={true}
+            />
+          }
+        />
+        <Route
+          path="/error"
+          element={
+            <ErrorPage
+              title="Mobile is not supported"
+              message="Please use a desktop device to access this application"
+              showLink={false}
+            />
+          }
+        />
       </Routes>
       <GlobalErrorHandling />
     </Container>

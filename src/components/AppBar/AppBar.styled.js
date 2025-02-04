@@ -27,5 +27,6 @@ export const Header = styled.header`
 
   @media screen and (min-width: 1280px){
     width: 70%;
+    max-width: 1000px;
   }
 `;
