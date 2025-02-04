@@ -21,6 +21,14 @@ export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
+  const isMobile = window.innerWidth < 768;
+
+  useEffect(() => {
+    if (isMobile) {
+      return console.log("Mobile is not supported");
+    }
+  }, [isMobile]);
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -63,7 +71,7 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <GlobalErrorHandling/>
+      <GlobalErrorHandling />
     </Container>
   );
 };
