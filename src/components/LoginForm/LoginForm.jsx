@@ -66,6 +66,7 @@ export const LoginForm = forwardRef((props, ref) => {
               name="email"
               label="Email"
               variant="filled"
+              autoComplete="email"
             />
             <FormControl variant="filled" fullWidth>
               <InputLabel sx={{ fontSize: '20px', color: '#fff' }}>
@@ -74,6 +75,7 @@ export const LoginForm = forwardRef((props, ref) => {
               <StyledFilledInput
                 type={showPassword ? 'text' : 'password'}
                 name="password"
+                label="Password"
                 autoComplete="current-password"
                 inputProps={{ minLength: 10 }}
                 endAdornment={

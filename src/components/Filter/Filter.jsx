@@ -23,6 +23,7 @@ export const Filter = () => {
         type="text"
         label="Enter Name"
         variant="filled"
+        autoComplete='off'
         value={filter}
         onChange={event => dispatch(setFilter(event.target.value))}
       />

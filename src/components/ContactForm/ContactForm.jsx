@@ -53,6 +53,7 @@ export const ContactForm = () => {
             type="text"
             name="name"
             label="Name"
+            autoComplete='off'
             variant="filled"
             inputProps={{
               inputMode: 'text',
@@ -67,6 +68,7 @@ export const ContactForm = () => {
             type="tel"
             name="tel"
             label="Number phone"
+            autoComplete='off'
             variant="filled"
             inputProps={{
               inputMode: 'tel',
