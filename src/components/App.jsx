@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import { SharedLayout } from './SharedLayout';
 import { LoadingContainer, LoadingText, Container } from './App.styled';
@@ -19,7 +19,6 @@ const ContactsPage = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const width = useWindowSize();
   const { isRefreshing } = useAuth();
 
@@ -27,19 +26,13 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (width < 768) {
-      // if (window.location.pathname !== '/error') {
-        navigate('/error');
-      // }
-    } else {
-      // if (window.location.pathname === '/error') {
-        navigate('/');
-      // }
-    }
-  }, [width, navigate]);
-
-  return isRefreshing ? (
+  return width < 768 ? (
+    <ErrorPage
+      title="Mobile is not supported"
+      message="Please use a desktop device to access this application"
+      showLink={false}
+    />
+  ) : isRefreshing ? (
     <LoadingContainer>
       <LoadingText>Fetching user data...</LoadingText>
       <Stack
@@ -82,16 +75,6 @@ export const App = () => {
               title="404 - Page not found"
               message="We couldn't find the page you were looking for."
               showLink={true}
-            />
-          }
-        />
-        <Route
-          path="/error"
-          element={
-            <ErrorPage
-              title="Mobile is not supported"
-              message="Please use a desktop device to access this application"
-              showLink={false}
             />
           }
         />

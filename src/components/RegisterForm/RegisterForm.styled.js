@@ -21,7 +21,7 @@ export const AddRegisterForm = styled.form`
   }
 
   @media screen and (min-width: 1280px) {
-    width: 400px;
+    width: 380px;
   }
 `;
 

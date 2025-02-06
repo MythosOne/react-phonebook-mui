@@ -12,7 +12,7 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    width: '444px',
+    width: '440px',
     border: '1px solid rgb(236, 236, 236)',
     borderRadius: '10px',
     boxShadow: 'rgba(0, 0, 0, 0.45) 0px 25px 20px -20px',
