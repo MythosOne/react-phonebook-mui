@@ -1,16 +1,18 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
-import { SharedLayout } from './SharedLayout';
-import { LoadingContainer, LoadingText, Container } from './App.styled';
 import { useDispatch } from 'react-redux';
-import { refreshUser } from 'redux/auth/operations';
-import { useAuth, useWindowSize } from 'hooks';
+import { SharedLayout } from './SharedLayout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
+
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth, useWindowSize } from 'hooks';
 import { ErrorPage } from 'pages/ErrorPage';
 import { GlobalErrorHandling } from './ErrorHandling/ErrorHandling';
+
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
+import { LoadingContainer, LoadingText, Container } from './App.styled';
 
 const HomePage = lazy(() => import('pages/Home'));
 const RegisterPage = lazy(() => import('pages/Register'));

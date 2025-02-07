@@ -1,4 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+
 import { logIn, logOut, refreshUser, register } from './operations';
 
 const extraActions = [logIn, logOut, refreshUser, register];
@@ -19,11 +20,8 @@ const authSlice = createSlice({
     return builder
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        // state.token = action.payload.token;
-        // state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
-        // console.log('LogIn action payload:', action.payload);
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
@@ -45,25 +43,17 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addMatcher(isAnyOf(...getActions('pending')), state => {
-        // console.log('isAnyOf(...getActions(pending))');
-        // console.log('authSlice.isLoading:', state.isLoading);
         state.isLoading = true;
       })
       .addMatcher(isAnyOf(...getActions('rejected')), (state, action) => {
-        // console.log('isAnyOf(...getActions(rejected))');
-        // console.log('authSlice.isLoading:', state.isLoading);
         state.isLoading = false;
         state.error = action.payload;
       })
       .addMatcher(isAnyOf(...getActions('fulfilled')), state => {
-        // console.log('isAnyOf(...getActions(fulfilled))');
-        // console.log('authSlice.isLoading:', state.isLoading);
         state.isLoading = false;
         state.error = null;
       });
   },
 });
-
-// export const { showError, hideError } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

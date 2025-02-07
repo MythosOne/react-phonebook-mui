@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 import { Wrapper, Title, Img } from './WelcomeBanner.styled';
-import img from '../img/phone.png';
+import img from '../../img/phone.png';
 
 export const WelcomeBanner = forwardRef(({ onImageLoad, style }, ref) => {
   return (

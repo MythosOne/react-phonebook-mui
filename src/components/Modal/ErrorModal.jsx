@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -46,7 +45,7 @@ export const ErrorModal = ({ open, title, message, onConfirm }) => {
             gap: '10px',
           }}
         >
-          <WarningIcon viewBox= '0 0 24 26'/>
+          <WarningIcon viewBox="0 0 24 26" />
           {title}
         </DialogTitle>
         <DialogContent sx={{ padding: '10px 14px' }}>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { showError } from '../error/errorSlice';
 
 axios.defaults.baseURL =
@@ -18,7 +19,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/users/signup', credentials);
-      // setAuthHeader(response.data.token);
+
       return response.data;
     } catch (error) {
       thunkAPI.dispatch(
@@ -46,7 +47,7 @@ export const logIn = createAsyncThunk(
           message: 'Please check your login details and try again',
         })
       );
-      // alert('Login error');
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }

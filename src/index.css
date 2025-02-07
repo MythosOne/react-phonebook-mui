@@ -2,7 +2,7 @@
 
 body {
   background-color: rgb(242 242 242);
-  background-image: url('/src/components/img/phonebook-bg.jpg');
+  background-image: url('img/phonebook-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -27,13 +27,5 @@ input[type='password']::-ms-clear {
 }
 
 section {
-  /* @media screen and (min-width: 767px) {
-    margin: 120px 0 0;
-  }
-
-  @media screen and (min-width: 1279px) {
-    margin: 140px 0 0;
-  } */
-
   margin: 160px 0 0;
 }

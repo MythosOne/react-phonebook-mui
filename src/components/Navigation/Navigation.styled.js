@@ -22,5 +22,5 @@ export const Link = styled(NavLink)`
 `;
 
 export const HomeIcon = styled(Home)`
-color: inherit;
-`
+  color: inherit;
+`;

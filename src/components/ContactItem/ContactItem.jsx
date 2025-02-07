@@ -65,7 +65,6 @@ export const ContactItem = ({ contact }) => {
                 name="delete"
                 onClick={() => {
                   setIsOpenModal(true);
-                  // handleDelete(contact._id);
                 }}
               >
                 Delete

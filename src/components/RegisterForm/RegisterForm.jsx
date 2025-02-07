@@ -118,12 +118,6 @@ export const RegisterForm = forwardRef(({ onSubmit, ...props }, ref) => {
           </StyledButton>
         </AddRegisterForm>
       )}
-
-      {/* {isRegistered && (
-        <div>
-          <p>Registration was successful! Go to login page...</p>
-        </div>
-      )} */}
     </>
   );
 });

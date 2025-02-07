@@ -5,7 +5,7 @@ import {
   selectContacts,
   selectFilter,
   selectIsLoading,
-} from '../../redux/contacts/selectors';
+} from 'redux/contacts/selectors';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
 import { Message } from './ContactList.styled';

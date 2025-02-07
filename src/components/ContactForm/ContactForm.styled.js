@@ -26,11 +26,6 @@ export const StyledTextField = styled(TextField)`
     font-size: 20px;
     color: white;
   }
-
-  /* & label.Mui-focused {
-    color: white;
-    font-weight: 600;
-  } */
 `;
 
 export const StyledButton = styled(Button)`

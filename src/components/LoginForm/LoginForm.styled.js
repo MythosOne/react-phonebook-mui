@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { Button, TextField, FilledInput } from '@mui/material';
 
 export const AddLoginForm = styled.form`
-  /* width: 400px; */
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -12,7 +11,6 @@ export const AddLoginForm = styled.form`
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   backdrop-filter: blur(10px);
-  /* margin-bottom: 20px; */
 
   @media screen and (min-width: 767px) and (max-width: 1279px) {
     width: 340px;
@@ -42,11 +40,6 @@ export const StyledTextField = styled(TextField)`
     font-size: 20px;
     color: white;
   }
-
-  /* & label.Mui-focused {
-    color: white;
-    font-weight: 600;
-  } */
 `;
 
 export const StyledFilledInput = styled(FilledInput)`

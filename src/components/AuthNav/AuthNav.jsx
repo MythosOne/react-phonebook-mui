@@ -1,6 +1,5 @@
 import { Link, NavBox } from './AuthNav.styled';
 
-
 export const AuthNav = () => {
   return (
     <NavBox>
