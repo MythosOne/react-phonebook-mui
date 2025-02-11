@@ -25,7 +25,7 @@ export const register = createAsyncThunk(
       thunkAPI.dispatch(
         showError({
           title: 'Registration failed',
-          message: 'Please try again',
+          message: error.response.data.message,
         })
       );
       return thunkAPI.rejectWithValue(error.message);
