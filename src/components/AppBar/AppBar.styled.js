@@ -7,7 +7,6 @@ export const Header = styled.header`
   left: 50%;
   transform: translateX(-50%);
   z-index: 1001;
-  /* width: 70%; */
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;

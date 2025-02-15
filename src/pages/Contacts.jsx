@@ -38,7 +38,6 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    // marginTop: '40px',
   },
 };
 

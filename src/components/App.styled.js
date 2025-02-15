@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.section`
-  margin: 10px auto;
+  margin: 0 auto;
   padding: 0px 10px;
   max-width: 1024px;
-  min-height: calc(90vh - 50px);
 `;
 
 export const LoadingContainer = styled.div`

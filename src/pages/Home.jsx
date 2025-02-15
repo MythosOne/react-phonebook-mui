@@ -5,7 +5,7 @@ import { WelcomeBanner } from 'components/WelcomeBanner/WelcomeBanner';
 
 const styles = {
   container: {
-    minHeight: 'calc(80vh - 50px)',
+    minHeight: '60vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

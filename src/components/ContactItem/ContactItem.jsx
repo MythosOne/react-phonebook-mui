@@ -16,11 +16,16 @@ export const ContactItem = ({ contact }) => {
   const nodeRef = useRef(null);
   const [isShowContact, setIsShowContact] = useState(true);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const deleteButtonRef = useRef(null);
 
   const handleDelete = contactId => {
     dispatch(deleteContact(contactId));
     setIsShowContact(false);
     setIsOpenModal(false);
+
+    if (deleteButtonRef.current) {
+      deleteButtonRef.current.focus();
+    }
   };
 
   return (
@@ -49,16 +54,13 @@ export const ContactItem = ({ contact }) => {
               </Avatar>
             </ListItemAvatar>
             <ListItemText>
-              <StyledTypography
-                fontSize="18px"
-                color="white"
-                textshadow="2px 2px 4px black"
-              >
+              <StyledTypography>
                 {`${contact.name} : ${contact.phone}`}
               </StyledTypography>
             </ListItemText>
             {
               <StyledButton
+                ref={deleteButtonRef}
                 variant="outlined"
                 startIcon={<PersonRemove />}
                 type="button"

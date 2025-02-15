@@ -75,7 +75,7 @@ export const ErrorModal = ({ open, title, message, onConfirm }) => {
             }}
             autoFocus
           >
-            To correct
+            Ok
           </Button>
         </DialogActions>
       </Dialog>

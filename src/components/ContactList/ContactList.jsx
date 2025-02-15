@@ -51,7 +51,7 @@ export const ContactList = () => {
         <Message>You do not have contacts 😯</Message>
       ) : (
         <>
-          {visibleContacts.length === 0 && (
+          {!isLoading && visibleContacts.length === 0 && (
             <Message>You don't have such a contact 😯</Message>
           )}
           <List sx={{ padding: '20px 20px 0' }}>
