@@ -14,6 +14,25 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+const handleErrorNetwork = (error, title, thunkAPI) => {
+  if (!navigator.Online || error.code === 'ERR_NETWORK') {
+    thunkAPI.dispatch(
+      showError({
+        title: 'Network error',
+        message: 'Please check your internet connection and try again',
+      })
+    );
+  } else {
+    thunkAPI.dispatch(
+      showError({
+        title: { title },
+        message: error.response.data.message,
+      })
+    );
+  }
+  return thunkAPI.rejectWithValue(error.message);
+};
+
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
@@ -22,13 +41,15 @@ export const register = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      thunkAPI.dispatch(
-        showError({
-          title: 'Registration failed',
-          message: error.response.data.message,
-        })
-      );
-      return thunkAPI.rejectWithValue(error.message);
+      handleErrorNetwork(error, 'Registration failed', thunkAPI);
+
+      // thunkAPI.dispatch(
+      //   showError({
+      //     title: 'Registration failed',
+      //     message: error.response.data.message,
+      //   })
+      // );
+      // return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
