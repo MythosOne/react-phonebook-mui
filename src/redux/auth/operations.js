@@ -15,7 +15,8 @@ const clearAuthHeader = () => {
 };
 
 const handleErrorNetwork = (error, title, thunkAPI) => {
-  if (!navigator.Online || error.code === 'ERR_NETWORK') {
+  if (!navigator.onLine || error.code === 'ERR_NETWORK') {
+    console.log('Error_One', error);
     thunkAPI.dispatch(
       showError({
         title: 'Network error',
@@ -23,9 +24,10 @@ const handleErrorNetwork = (error, title, thunkAPI) => {
       })
     );
   } else {
+    console.log('Error_Two', error);
     thunkAPI.dispatch(
       showError({
-        title: { title },
+        title,
         message: error.response.data.message,
       })
     );
@@ -41,15 +43,7 @@ export const register = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      handleErrorNetwork(error, 'Registration failed', thunkAPI);
-
-      // thunkAPI.dispatch(
-      //   showError({
-      //     title: 'Registration failed',
-      //     message: error.response.data.message,
-      //   })
-      // );
-      // return thunkAPI.rejectWithValue(error.message);
+      return handleErrorNetwork(error, 'Registration failed', thunkAPI);
     }
   }
 );
@@ -62,14 +56,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      thunkAPI.dispatch(
-        showError({
-          title: 'Authentication failed',
-          message: 'Please check your login details and try again',
-        })
-      );
-
-      return thunkAPI.rejectWithValue(error.message);
+      return handleErrorNetwork(error, 'Authentication failed', thunkAPI);
     }
   }
 );
@@ -79,13 +66,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     clearAuthHeader();
   } catch (error) {
-    thunkAPI.dispatch(
-      showError({
-        title: 'Logout failed',
-        message: 'Please try again',
-      })
-    );
-    return thunkAPI.rejectWithValue(error.message);
+    return handleErrorNetwork(error, 'Logout failed', thunkAPI);
   }
 });
 
@@ -105,8 +86,10 @@ export const refreshUser = createAsyncThunk(
     } catch (error) {
       if (error.response?.status === 401) {
         thunkAPI.dispatch(logOut());
+        return thunkAPI.rejectWithValue('Unauthorized');
       }
-      return thunkAPI.rejectWithValue(error.message);
+
+      return handleErrorNetwork(error, 'Refresh failed', thunkAPI);
     }
   }
 );
