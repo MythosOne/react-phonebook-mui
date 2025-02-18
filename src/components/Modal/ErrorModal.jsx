@@ -23,7 +23,7 @@ export const ErrorModal = ({ open, title, message, onConfirm }) => {
           '& .MuiPaper-root': {
             width: '50%',
             minWidth: '300px',
-            maxWidth: '444px',
+            maxWidth: '344px',
             backgroundColor: 'transparent',
             border: '1px solid rgb(236, 236, 236)',
             borderRadius: '10px',

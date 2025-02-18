@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { showError } from '../error/errorSlice';
+import { handleErrorNetwork } from 'redux/error/errorHandlers';
 
 axios.defaults.baseURL =
   'https://contacts-reader-backend-7k84.onrender.com/api';
@@ -12,27 +12,6 @@ const setAuthHeader = token => {
 
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
-};
-
-const handleErrorNetwork = (error, title, thunkAPI) => {
-  if (!navigator.onLine || error.code === 'ERR_NETWORK') {
-    console.log('Error_One', error);
-    thunkAPI.dispatch(
-      showError({
-        title: 'Network error',
-        message: 'Please check your internet connection and try again',
-      })
-    );
-  } else {
-    console.log('Error_Two', error);
-    thunkAPI.dispatch(
-      showError({
-        title,
-        message: error.response.data.message,
-      })
-    );
-  }
-  return thunkAPI.rejectWithValue(error.message);
 };
 
 export const register = createAsyncThunk(
