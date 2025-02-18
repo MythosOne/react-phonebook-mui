@@ -12,9 +12,6 @@ export const AddRegisterForm = styled.form`
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   backdrop-filter: blur(10px);
-  /* margin-bottom: 20px; */
-
-  /* transition: 0.5s; */
 
   @media screen and (min-width: 767px) and (max-width: 1279px) {
     width: 340px;

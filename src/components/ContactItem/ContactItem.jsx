@@ -18,10 +18,19 @@ export const ContactItem = ({ contact }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const deleteButtonRef = useRef(null);
 
-  const handleDelete = contactId => {
-    dispatch(deleteContact(contactId));
-    setIsShowContact(false);
-    setIsOpenModal(false);
+  const handleDelete = async contactId => {
+    try {
+      const resultAction = await dispatch(deleteContact(contactId));
+
+      if (deleteContact.rejected.match(resultAction)) {
+        setIsShowContact(true);
+      } else {
+        setIsShowContact(false);
+        setIsOpenModal(false);
+      }
+    } catch (error) {
+      setIsShowContact(true);
+    }
 
     if (deleteButtonRef.current) {
       deleteButtonRef.current.focus();
