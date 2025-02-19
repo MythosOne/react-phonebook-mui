@@ -93,7 +93,7 @@ export const ContactForm = () => {
         />
         <StyledTextField
           fullWidth
-          type="tel"
+          type="text"
           name="phone"
           label="Number phone"
           autoComplete="off"
