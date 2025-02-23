@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <section style={styles.container}>
       <Transition in={isImageLoaded} timeout={300} nodeRef={nodeRef}>
-        {(state) => (
+        {state => (
           <WelcomeBanner
             ref={nodeRef}
             style={{
