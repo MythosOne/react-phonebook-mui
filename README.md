@@ -9,10 +9,10 @@ Frontend:
 5. Axios.
 6. Redux.
 
-![Alt text](./src/components/img/Frontend-Home.png)
-![Alt text](./src/components/img/Frontend-Login.png)
-![Alt text](./src/components/img/Frontend-Register.png)
+![Alt text](./src/components/img/react_phonebook_mui_homepage.jpg)
+![Alt text](./src/components/img/react_phonebook_mui_register.jpg)
+![Alt text](./src/components/img/react_phonebook_mui_perfomance.jpg)
 
 Backend:
 
-![Alt text](./src/components/img/Backend.png)
+![Alt text](./src/components/img/node_rest_api_contacts.jpg)
